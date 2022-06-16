@@ -1,0 +1,158 @@
+{{!-- ================================================== admin panel============================ --}}
+
+<link rel="stylesheet" href="/stylesheets/adminpanel.css">
+<script src="https://kit.fontawesome.com/d296e17030.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/d296e17030.js" crossorigin="anonymous"></script>
+<!-- Banner -->
+<!-- Main -->
+<main class="py-6 bg-surface-secondary">
+    <div class="container-fluid">
+        <!-- Card stats -->
+        <div class="row g-6 mb-6">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card shadow border-0">
+                    <a href="/admin/view-rooms">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col"> <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total
+                                        Rooms</span> <span class="h3 font-bold mb-0">{{TotalRooms}}</span> </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle"> <i
+                                            class="bi bi-credit-card"></i> </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-0 text-sm"> <span
+                                    class="badge badge-pill bg-soft-success text-success me-2"> <i
+                                        class="bi bi-arrow-up me-1"></i>13% </span> <span
+                                    class="text-nowrap text-xs text-muted">Since last month</span> </div>
+
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card shadow border-0">
+                    <a href="/admin/occupiedRooms">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col"> <span
+                                        class="h6 font-semibold text-muted text-sm d-block mb-2">Occupied
+                                        Rooms</span> <span class="h3 font-bold mb-0">{{TotalCheckinRooms}}</span> </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-primary text-white text-lg rounded-circle"> <i
+                                            class="bi bi-people"></i> </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-0 text-sm"> <span
+                                    class="badge badge-pill bg-soft-success text-success me-2"> <i
+                                        class="bi bi-arrow-up me-1"></i>30% </span> <span
+                                    class="text-nowrap text-xs text-muted">Since last month</span> </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card shadow border-0">
+                    <a href="/admin/bookedRooms">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col"> <span class="h6 font-semibold text-muted text-sm d-block mb-2">Booked
+                                        Rooms</span>
+                                    <span class="h3 font-bold mb-0">{{TotalBookedRooms}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white text-lg rounded-circle"> <i
+                                            class="bi bi-clock-history"></i> </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-0 text-sm"> <span
+                                    class="badge badge-pill bg-soft-danger text-danger me-2">
+                                    <i class="bi bi-arrow-down me-1"></i>-5% </span> <span
+                                    class="text-nowrap text-xs text-muted">Since last month</span> </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col"> <span class="h6 font-semibold text-muted text-sm d-block mb-2">Vacant
+                                    Rooms</span>
+                                <span class="h3 font-bold mb-0">{{AvailableRooms}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-warning text-white text-lg rounded-circle"> <i
+                                        class="bi bi-minecart-loaded"></i> </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-0 text-sm"> <span
+                                class="badge badge-pill bg-soft-success text-success me-2"> <i
+                                    class="bi bi-arrow-up me-1"></i>10% </span> <span
+                                class="text-nowrap text-xs text-muted">Since last month</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow border-0 mb-7">
+            <div class="card-header">
+                <h5 class="mb-0">Applications</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover table-nowrap">
+                    <thead class="thead-light">
+                        <tr>
+
+                            <th scope="col">Room Name</th>
+                            <th scope="col">Room Type</th>
+                            <th scope="col">Booked Rooms</th>
+                            <th scope="col">service_charge</th>
+                            <th scope="col">Total(with sc-deposit)</th>
+                            <th scope="col">images</th>
+                            <th scope="col">Options</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each OccupiedRooms}}
+                        <tr>
+
+                            <td style="word-wrap: break-word;min-width: 10px;max-width: 160px; "
+                                class="text-truncate para">
+                                {{this.room.room_name}}</td>
+                            <td>{{this.room.room_type}}</td>
+                            <td>{{this.number_of_Rooms}}</td>
+                            <td>{{this.room.service_charge}}</td>
+                            <td>{{this.room.total}}</td>
+                            <td><img src="/images/rooms-img/{{this.room.all_images.[0].main_img}}" alt="images"
+                                    class="m-1 avatar avatar-sm rounded-circle me-2"></td>
+
+                            <td class="text-end">
+                                <a href="/admin/room-view/{{this.room._id}}"
+                                    class="btn btn-sm btn-square btn-neutral text-danger-hover me-1">
+                                    <i class="bi-eye"></i>
+                                    <a href="/admin/room-edit/{{this.room._id}}"
+                                        class="btn btn-sm btn-square btn-neutral text-danger-hover"> <i
+                                            class="bi bi-pen">
+                                        </i></a>
+                                    <a href="/admin/delete-room/{{this.room._id}}"
+                                        class="btn btn-sm btn-square btn-neutral text-danger-hover"
+                                        onclick="return confirm('Are you sure you want to Remove {{this.room_name}}?');">
+                                        <i class="bi bi-trash"></i> </a>
+                            </td>
+
+
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer border-0 py-5"> <span class="text-muted text-sm">Showing 10 items out of 250
+                    results found</span> </div>
+        </div>
+    </div>
+</main>
+</div>
+</div>

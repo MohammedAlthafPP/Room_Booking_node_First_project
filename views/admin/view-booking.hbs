@@ -1,0 +1,260 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="/stylesheets/admin-card.css">
+
+
+
+<main class="py-6 bg-surface-secondary">
+    <div class="container-fluid">
+
+
+
+
+        <div class="d-flex justify-content-center mt-5">
+
+            <div class="col-md-10 ">
+
+                <div class="row">
+
+                    <div class="col-xl-3 col-lg-6 ">
+                        <div class="card l-bg-cherry">
+                            <div class="card-statistic-3 p-4">
+                                <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
+                                <div class="mb-4">
+                                    <h5 class="card-title mb-0">Total Bookings</h5>
+                                </div>
+                                <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0">
+                                            {{viewBookingTotalCount}}
+                                        </h2>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <span>12.5% <i class="fa fa-arrow-up"></i></span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card l-bg-green-dark">
+                            <div class="card-statistic-3 p-4">
+                                <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                                <div class="mb-4">
+                                    <h5 class="card-title mb-0">Confirmed Bookings</h5>
+                                </div>
+                                <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0">
+                                         {{TotalConfirmedCount}} 
+                                        </h2>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <span>10.1% <i class="fa fa-arrow-up"></i></span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                    <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card l-bg-blue-dark">
+                            <div class="card-statistic-3 p-4">
+                                <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                                <div class="mb-4">
+                                    <h5 class="card-title mb-0">Pending Payment</h5>
+                                </div>
+                                <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0">
+                                            {{TotalPendingCount}}
+                                        </h2>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <span>9.23% <i class="fa fa-arrow-up"></i></span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                    <div class="progress-bar l-bg-green" role="progressbar" data-width="25%"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-6 ">
+                        <div class="card l-bg-orange-dark">
+                            <div class="card-statistic-3 p-4">
+                                <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="mb-4">
+                                    <h5 class="card-title mb-0">Cancelled Booking</h5>
+                                </div>
+                                <div class="row align-items-center mb-2 d-flex">
+                                    <div class="col-8">
+                                        <h2 class="d-flex align-items-center mb-0">
+                                            {{TotalCancelledCount}}
+                                        </h2>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <span>2.5% <i class="fa fa-arrow-up"></i></span>
+                                    </div>
+                                </div>
+                                <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                    <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- Table Start -->
+        <div class="container-fluid pt-2 px-4">
+            {{!-- <a href="/admin/addnewcar" class="btn " style="background-color: #FC6414; color: white;">Add New
+                Car</a>
+            <a href="" class="btn ms-3" style="background-color: #FC6414; color: white;">Booked Cars</a> --}}
+            <div class="row g-4 mt-3">
+
+                <div class="col-12">
+
+                    <div class="bg-light rounded h-100 ">
+
+                        {{!-- <h6 class="mb-4">All Cars</h6> --}}
+
+                        <div id="wrapper" class="pt-5">
+
+                            <!-- Content Wrapper -->
+                            <div id="content-wrapper" class="d-flex flex-column pt-3">
+                                <div class="container-fluid">
+                                    <!-- DataTales Example -->
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">Order History</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" id="dataTable" width="100%"
+                                                    cellspacing="0">
+
+                                                    <thead>
+
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>User Id</th>
+                                                            <th>Room Name</th>
+                                                            <th>Room Type</th>
+                                                            <th>Check-in & <br>Check-out</th>
+
+                                                            <th>Price</th>
+                                                            <th>Rooms</th>
+                                                            <th>Days</th>
+                                                            <th>Adult</th>
+                                                            <th>Children</th>
+                                                            <th>Payment Method</th>
+                                                            <th>Total Amount</th>
+                                                            <th>Status</th>
+                                                            <th>Option</th>
+
+                                                            {{!-- <th>Deposit</th>
+                                                            <th>Options</th> --}}
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each viewBooking}}
+                                                        <tr>
+                                                            <td>{{this.timeAndDate}}</td>
+                                                            <td>{{this.User_id}}</td>
+                                                            <td>{{this.room.room_name}}</td>
+                                                            <td>{{this.room.room_type}}</td>
+                                                            <td>{{this.checkin}} -TO- {{this.checkout}}</td>
+
+
+                                                            <td><span> &#8377; </span>{{this.room.total}}</td>
+                                                            <td>{{this.number_of_Rooms}}</td>
+                                                            <td>{{this.total_Days}}</td>
+                                                            <td>{{this.adult}}</td>
+                                                            <td>{{this.children}}</td>
+                                                            <td>{{this.paymentMethod}}</td>
+                                                            <td><span> &#8377; </span>{{this.total_Price}}</td>
+                                                            <td>{{this.Status}}</td>
+                                                            <td>
+                                                                {{!-- <a
+                                                                    href="/user/cancel-booking?id={{this._id}}&c={{this.carId}}"
+                                                                    class="btn btn-danger text-white">Cancel</i> --}}
+
+                                                                    <a href="/users/cancle-booking?room_id={{this._id}}"
+                                                                        class="btn btn-danger"
+                                                                        onclick="return confirm('Are you sure you want to Cancel the Booking of {{this._id}}?');">Cancel</a>
+                                                            </td>
+
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+           </div>
+</div>
+        <!-- Table End -->
+        {{!--=========== admin panel layout js Start ===========--}}
+        <!-- JavaScript Libraries -->
+
+        <script src="/lib/admin/lib/chart/chart.min.js"></script>
+        <script src="/lib/admin/lib/easing/easing.min.js"></script>
+        <script src="/lib/admin/lib/waypoints/waypoints.min.js"></script>
+        <script src="/lib/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/lib/admin/lib/tempusdominus/js/moment.min.js"></script>
+        <script src="/lib/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="/lib/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        <!-- Template Javascript -->
+        <script src="/javascripts/admin/admin-panel/js/main.js"></script>
+        {{!--=========== admin panel layout js End ===========--}}
+        <!-- Libraries Stylesheet -->
+        <link href="/lib/admin/lib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
+        <link href="/lib/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="/stylesheets/admin/admin-panel-css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="/stylesheets/admin/admin-panel-css/style.css" rel="stylesheet">
+        {{!--========== Admin panel layout css End ====================--}}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

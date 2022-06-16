@@ -1,0 +1,76 @@
+<h1>kaaanaaaamm</h1>
+
+
+
+
+
+              <form class="pb-3" action="/" method="post" id="checkout-form">
+                <div class="rounded d-flex" style="background-color: hsl(210, 17%, 98%);">
+                  <input type="number" style="width:100% ; height:40px ; border: 0; " class=""
+                    placeholder="Enter your Phone Number" name="mobile">
+                  <input type="text" name="user_id" value="{{user._id}}" hidden>
+                  <input type="text" name="Room_id" value="{{rooms._id}}" hidden>
+
+                </div>
+                <hr />
+                <div class="pt-2">
+                  <div class="d-flex pb-2">
+                    <div>
+                      <p>
+                        <b>Patient Balance <span class="text-success">$13.24</span></b>
+                      </p>
+                    </div>
+                    {{!-- <div class="ms-auto">
+                      <p class="text-primary">
+                        <i class="fas fa-plus-circle text-primary pe-1"></i>Add payment card
+                      </p>
+                    </div> --}}
+                  </div>
+                  <p>
+                    This is an estimate for the portion of your order (not covered by
+                    insurance) due today . once insurance finalizes their review refunds
+                    and/or balances will reconcile automatically.
+                  </p>
+
+                  <div class="d-flex flex-row pb-3">
+                    <div class="d-flex align-items-center pe-2">
+                      <input class="form-check-input" type="radio" name="payment_method" id="radioNoLabel1"
+                        value="pay_at_hotel" aria-label="..." checked />
+                    </div>
+                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                      <p class="mb-0">
+                        <i class="fa-solid fa-hotel  text-dark pe-2"></i>Pay at Hotel
+                      </p>
+                      {{!-- <div class="ms-auto">************3456</div> --}}
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row">
+                    <div class="d-flex align-items-center pe-2">
+                      <input class="form-check-input" type="radio" name="payment_method" id="radioNoLabel2"
+                        value="online" aria-label="..." />
+                    </div>
+                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                      <p class="mb-0">
+                        <i class="fab fa-cc-visa fa-lg  text-dark pe-2"></i>Debit/Credit card or UPI
+                      </p>
+                      {{!-- <div class="ms-auto">************1038</div> --}}
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-block btn-lg">Proceed to payment</button>
+                  {{!-- <input type="button" value="Proceed to payment" class="btn btn-primary btn-block btn-lg" /> --}}
+
+                         
+<!-- Button trigger modal -->
+<button type="submit" class="btn btn-primary" data-bs-toggle="modal" >
+  Launch static backdrop modal
+</button>
+
+
+
+
+
+
+
+
+              </form>

@@ -1,0 +1,398 @@
+<section class="vh-100" style="background-color: #2779e2;">
+
+  <div class="container h-100">
+    <form action="/admin/add-rooms" method="POST" enctype="multipart/form-data">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-9">
+
+          <h1 class="text-white mb-4">Add Rooms here</h1>
+          <p class="text-center bg-success text-white fw-bold fs-3">{{this.message}}</p>
+          <p class="text-center bg-danger text-white fw-bold fs-3">{{this.messageerr}}</p>
+          <div class="card" style="border-radius: 15px;">
+
+            <div class="card-body">
+              <div class="row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">Room Name</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+
+                  <input type="text" class="form-control form-control-lg" name="room_name" required />
+
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">Type</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+
+                  <div class="col-md-4">
+
+                    <select name="room_type" id="room_type" class="form-control input-md mt-3 ">
+                      <option value="Single">Single</option>
+                      <option value="Double">Double</option>
+                      <option value="Queen">Queen</option>
+                      <option value="Suite">Suite</option>
+                      <option value="Apartments">Apartments</option>
+                      <option value="Villa">Villa</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Description</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input class="form-control" rows="3" name="description" required></input>
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Description</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="product_id" name="room_id" placeholder="ROOM ID" class="form-control" required="" type="text">
+                </div>
+              </div>
+              
+               <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">ROOM TYPE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                   <select name="room_type" id="room_type" class="form-control mt-3">
+        <option value="Single">Single</option>
+        <option value="Double">Double</option>
+        <option value="Queen">Queen</option>
+        <option value="Suite">Suite</option>
+        <option value="Apartments">Apartments</option>
+        <option value="Villa">Villa</option>
+      </select>
+    </div>
+  </div>
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">AVAILABLE ROOMS</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                   <input id="available_quantity" name="available_roomS" placeholder="AVAILABLE ROOMS" class="form-control " required="" type="text">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">PRICE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                   <input class="form-control" id="product_descripti" name="room_price" type="number" placeholder="PRICE">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">PERCENTAGE OF DISCOUNT</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                    <input class="form-control" id="product_name_fr" name="percentage_discount" type="number" placeholder="PERCENTAGE OF DISCOUNT">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">MAX PRICE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                 <input id="percentage_discount" name="max_price" placeholder="MAX AMOUNT" class="form-control" required="" type="number">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">SERVICE CHARGE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                   <input id="percentage_discount" name="service_charge" placeholder="SERVICE CHARGE" class="form-control"  required="" type="number">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">TAX PERCENTAGE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                    <input id="percentage_discount" name="tax_percentage" placeholder="TAX PERCENTAGE" class="form-control" required="" type="number">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">SECURITY DEPOSIT</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                   <input id="percentage_discount" name="service_charge" placeholder="SERVICE CHARGE" class="form-contro" required="" type="number">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">PLACE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                 <input id="stock_alert" name="place" placeholder="PLACE" class="form-control input-md" required="" type="text">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">DISTRICT</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <div class="col-md-4">
+
+      <select name="district" id="cars" class="form-control mt-3">
+        <option value="Malappuram">Malappuram</option>
+        <option value="Kozhikode">Kozhikode</option>
+        <option value="Palakkad">Palakkad</option>
+        <option value="Wayanad">Wayanad</option>
+        <option value="Alappuzha">Alappuzha</option>
+        <option value="Kannur">Kannur</option>
+        <option value="Ernakulam">Ernakulam</option>
+        <option value="Idukki">Idukki</option>
+      </select>
+
+    </div>
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">STATE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                   <input id="stock_critical" name="state" placeholder="STATE" class="form-control " required=""  type="search">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">HOW MANY FROM CENTER/TOWN</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                    <input id="how_km" name="how_many_km" placeholder="HOW MANY FROM CENTER/TOWN" class="form-control"  required="" type="text">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">ADDRESS</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                    <input id="how_km" name="address" placeholder="ADDRESS" class="form-control" required="" type="text">
+                </div>
+              </div>
+
+               <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">BATHROOMS</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <select name="bathrooms" placeholder="Bathrooms" id="bathrooms" class="form-control mt-3">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+                </div>
+              </div>
+              
+               <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">BED</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                 <select name="bed" placeholder="COUNT OF BEDS" id="BEDROOMS" class="form-control mt-3">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+                </div>
+              </div>
+              
+               <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">MOST POPULAR FACILITIES</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <div class="form-check form-check-inline m-3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Free WiFi" />
+        <label class="form-check-label" for="inlineCheckbox1">Free WiFi</label>
+      </div>
+
+      <div class="form-check form-check-inline  m-3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Free parking" />
+        <label class="form-check-label" for="inlineCheckbox2">Free parking</label>
+      </div>
+
+      <div class="form-check form-check-inline  m-3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Breakfast Included" />
+        <label class="form-check-label" for="inlineCheckbox3">Breakfast Included</label>
+      </div>
+
+      <div class="form-check form-check-inline  m-3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="24-Hour Front Desk" />
+        <label class="form-check-label" for="inlineCheckbox3">24-Hour Front Desk</label>
+      </div>
+
+      <div class="form-check form-check-inline  m-3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Bar" />
+        <label class="form-check-label" for="inlineCheckbox3">Bar</label>
+      </div>
+
+      <div class="form-check form-check-inline  m-3">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Business Facilities" />
+        <label class="form-check-label" for="inlineCheckbox3">Buniness Facilities</label>
+      </div>
+                </div>
+              </div>
+              
+               <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">FEATURES OF ROOM</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="author" name="features" placeholder="FEATURES OF ROOM" class="form-control" required=""  type="text">
+                </div>
+              </div>
+              
+               <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">ACTIVIES</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                   <input id="enable_display" name="activities" placeholder="PROVIDING ACTIVIES" class="form-control" required="" type="text">
+                </div>
+              </div>
+              
+            
+  `            <hr class="mx-n3">
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">main_image</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+                  <p class="text-danger">{{this.imgmessage}}</p>
+                  <br>
+                  <img class="mb-3" src="/images/rooms-img/{{this.rooms.images}}" alt=""
+                    style="width: 150px;px;,height:150px;" id="imgview">
+                  <input class="form-control form-control-lg" id="formFileLg" type="file" name="images"
+                    onchange="viewImage(event)" required />
+                  <div class="small text-muted mt-2">Upload your images. Max file
+                    size 3 MB</div>
+
+                </div>
+              </div>
+
+
+              <hr class="mx-n3">
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">auxiliary_images</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+                  <p class="text-danger">{{this.imgmessage}}</p>
+                  <br>
+                  <img class="mb-3" src="/images/rooms-img/{{this.rooms.images}}" alt=""
+                    style="width: 150px;px;,height:150px;" id="imgview">
+                  <input class="form-control form-control-lg" id="formFileLg" type="file" name="images"
+                    onchange="viewImage(event)" required />
+                  <div class="small text-muted mt-2">Upload your images. Max file
+                    size 3 MB</div>
+
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+
+              <div class="px-5 py-4">
+                <button type="submit" class="btn btn-primary btn-lg">submit</button>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $("#checkout-for").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: '/otp-modal',
+      method: 'post',
+      data: $('#checkout-for').serialize(),
+      success: (response) => {
+
+        if (response == true) {
+          $("#staticBackdrop").modal('show');
+
+        } else {
+          $("#staticBackdrop").modal('hide');
+        }
+
+      }
+    })
+
+  })
+
+
+
+</script>

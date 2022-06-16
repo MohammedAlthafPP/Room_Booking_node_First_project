@@ -1,0 +1,336 @@
+
+
+
+<style>
+  .ui-menu {
+    top: 60px !important;
+    z-index: 99 !important;
+    position: fixed !important;
+
+
+
+  }
+
+  .ui-helper-hidden-accessible {
+    margin-top: 20px;
+  }
+</style>
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top " id="usernavbar">
+  <div class="container bg-transparent">
+    <a class="navbar-brand" href="/users/homepage"> <img src="/images/bluepearl.logo.png" alt="" style="width:90px; height:74px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+
+    <div class="collapse navbar-collapse  ps-lg-5 " id="navbarSupportedContent">
+      {{#if date}}
+      <form action="/users/datesubmit" method="post">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly ms-lg-5 mt-3">
+          <li class="nav-item">
+            {{#if isReadOnly}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
+                aria-label="Search" value="{{date.destination}}" id="destination-search" name="destination" required readonly
+                style="background-color:white;">
+            </div>
+            {{else}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
+                aria-label="Search" value="{{date.destination}}" id="destination-search" name="destination">
+            </div>
+            {{/if}}
+          </li>
+          <li class="nav-item">
+            {{#if isReadOnly}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onsubmit="calculateHourss()"
+                required readonly style="background-color:white;">
+            </div>
+            {{else}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onsubmit="calculateHourss()"
+                required>
+            </div>
+            {{/if}}
+          </li>
+          <li class="nav-item">
+            {{#if isReadOnly}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{date.checkout}}" name="checkout" id="CheckOut12"
+                onsubmit="calculateHourss()" required readonly style="background-color:white;">
+            </div>
+            {{else}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{date.checkout}}" name="checkout" id="CheckOut12"
+                onsubmit="calculateHourss()" required>
+            </div>
+            {{/if}}
+          </li>
+          {{!-- <li class="nav-item">
+            <button type="button" class="btn border btn-square-md rounded-pill ms-2 bg-white"
+              data-mdb-ripple-color="dark"><i class="fa-solid fa-user-group"></i>{{usreRequirements.adult}}</button>
+
+          </li> --}}
+          <li class="nav-item ">
+            {{#if isReadOnly}}
+
+            <div class="form-group">
+              <button type="button" class="btn border btn-square-md rounded-pill me-2 bg-white"
+                data-mdb-ripple-color="dark">{{date.adult}}</button>
+            </div>
+            {{else}}
+
+            <div class="form-group">
+
+              <select name="adult" class=" form-control me-2 rounded-pill mb-2 bg-white " id="inputAdult"
+                style="width: 50px; " required>
+
+                <option value="{{date.adult}}" selected>{{date.adult}}</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+
+
+              </select>
+            
+            </div>
+            {{/if}}
+
+          </li>
+
+          {{#if isReadOnly}}
+          <li class="nav-item" style="visibility:hidden;">
+
+            <button type="submit" class="btn border btn-square-md rounded-pill me-2 bg-white"
+              data-mdb-ripple-color="dark"><img src="/images/322497_search_icon.png" alt=""
+                style="width:24px; height:24px; "></button>
+          </li>
+          {{else}}
+          <li class="nav-item">
+
+            <button type="submit" class="btn border btn-square-md rounded-pill me-2 bg-white"
+              data-mdb-ripple-color="dark"><img src="/images/322497_search_icon.png" alt=""
+                style="width:24px; height:24px;"></button>
+          </li>
+          {{/if}}
+
+          <li>
+            <input type="text" value="" id="hour" name="hours" hidden>
+            <input type="" value="" id="day" name="days" hidden>
+              <input type="number" name="room" value="1" hidden>
+          </li>
+
+
+
+        </ul>
+      </form>
+      {{else}}
+
+
+      <form action="/users/datesubmit" method="post" class="mt-2">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly ms-lg-5 mt-3">
+          <li class="nav-item">
+            {{#if isReadOnly}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
+                aria-label="Search" value="{{usreRequirements.destination}}" id="destination-search" name="destination"
+                required readonly style="background-color:white;">
+            </div>
+            {{else}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
+                aria-label="Search" value="{{usreRequirements.destination}}" id="destination-search" name="destination"
+                required>
+              {{/if}}
+          </li>
+          <li class="nav-item">
+            {{#if isReadOnly}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{usreRequirements.checkin}}" name="checkin" id="CheckIn12"
+                onchange="calculateHourss()" required readonly style="background-color:white;">
+            </div>
+            {{else}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{usreRequirements.checkin}}" name="checkin" id="CheckIn12"
+                onchange="calculateHourss()" required>
+            </div>
+            {{/if}}
+          </li>
+          <li class="nav-item">
+            {{#if isReadOnly}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{usreRequirements.checkout}}" name="checkout" id="CheckOut12"
+                onchange="calculateHourss()" required readonly style="background-color:white;">
+            </div>
+            {{else}}
+            <div class="d-flex">
+              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+                aria-label="Search" value="{{usreRequirements.checkout}}" name="checkout" id="CheckOut12"
+                onchange="calculateHourss()" required>
+            </div>
+            {{/if}}
+
+          </li>
+          <li class="nav-item ">
+            {{#if isReadOnly}}
+            <div class="form-group">
+              <button type="button" class="btn border btn-square-md rounded-pill me-2 bg-white "
+                data-mdb-ripple-color="dark" style="background-color:white; width:75px;"><i class="fa-solid fa-users"></i> <span>{{usreRequirements.adult}}</span></button>
+            </div>
+            {{else}}
+
+            <div class="form-group">
+
+              <select name="adult" class=" form-control me-2 rounded-pill mb-2 bg-white " id="inputAdult"
+                style="width: 45px; " data-bs-toggle="tooltip" data-bs-placement="top" title="Guests Count" required>
+                {{#if usreRequirements.adult}}
+                <option value="{{usreRequirements.adult}}" selected>{{usreRequirements.adult}}</option>
+
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                {{else}}
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                {{/if}}
+
+              </select>
+            </div>
+            {{/if}}
+          </li>
+          {{#if isReadOnly}}
+          <li class="nav-item" style="visibility:hidden;">
+            <button type="submit" class="btn border btn-square-md rounded-pill me-2 bg-white"
+              data-mdb-ripple-color="dark"><img src="/images/322497_search_icon.png" alt=""
+                style="width:24px; height:24px;"></button>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <button type="submit" class="btn border btn-square-md rounded-pill me-2 bg-white"
+              data-mdb-ripple-color="dark"><img src="/images/322497_search_icon.png" alt=""
+                style="width:24px; height:24px;"></button>
+          </li>
+          {{/if}}
+          <li>
+            <input type="text" value="" id="hour" name="hours" hidden>
+            <input type="text" value="" id="day" name="days" hidden>
+             <input type="number" name="room" value="1" hidden>
+          </li>
+
+        </ul>
+      </form>
+      {{/if}}
+      {{!-- <form class="d-flex ">
+        <a href="/user-login" class="btn fw-bold fs-5 me-5 text-white">Log in</a>
+        <a href="/user-signup"
+          class="btn btn-outline-success rounded-pill fw-bold text-white btn bg-transparent border-3 border-white">Sign
+          Up</a>
+
+
+      </form> --}}
+
+      <form class="d-flex ">
+        <a href="/users/logout" class="btn fw-bold fs-5 me-5 text-black">Logout</a>
+
+
+        {{#if user}}
+
+
+        <div class="dropdown">
+          <button
+            class="dropdown-toggl btn btn-outline-dark rounded-pill fw-bold text-black btn bg-transparent border-3 border-black  "
+            type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+         <span class="text-truncate"> {{user.name}}</span> 
+
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="/user-profile?id={{user._id}}">Profile</a></li>
+            <li><a class="dropdown-item" href="/view-Wishlist">Wishlist</a></li>
+            {{!-- <li><a class="dropdown-item" href="#">Booking</a></li> --}}
+          </ul>
+        </div>
+        {{else}}
+        <a href="/user-signup"
+          class="btn btn-outline-success rounded-pill fw-bold text-dark btn bg-transparent border-3 border-dark">Sign
+          Up</a>
+        {{/if}}
+
+      </form>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+
+
+
+<script>
+  function calculateHourss() {
+    var checkin = document.getElementById('CheckIn12').value;
+    var checkout = document.getElementById('CheckOut12').value;
+    const dateIn = new Date(checkin);
+    const dateout = new Date(checkout);
+    const time = Math.abs(dateout - dateIn);
+    const totalhours = Math.ceil(time / (1000 * 60 * 60));
+    const days = Math.ceil(totalhours / 24)
+    document.getElementById('hour').value = totalhours;
+    document.getElementById('day').value = days;
+    console.log(totalhours)
+  }
+
+</script>
+
+
+
+
+{{!-- 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> --}}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
+

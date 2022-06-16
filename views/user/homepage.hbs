@@ -1,0 +1,511 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<script src="https://kit.fontawesome.com/d296e17030.js" crossorigin="anonymous"></script>
+{{!-- ================================ MODAL for Filter =========================================== --}}
+
+
+
+
+<section class="bg-light">
+  <div class="container">
+    <div class="row ">
+
+
+
+      <form action="/users/filters?price=price_range&bed=bed&bathroom=bathroom" method="get" class="">
+
+        <div class="modal fade text-start " id="modalSubscriptionForm" tabindex="-1" role="dialog"
+          aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Filters <span><i class="fa fa-filter text-dark"
+                      aria-hidden="true"></i></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body mx-3">
+                <div class="md-form mb-5">
+
+                  {{!-- ==================================== price range ================= --}}
+                  <label for="customRange2" class="form-label">Price range</label>
+                  <input type="range" class="form-range" min="0" max="5000" id="customRange2" name="price_range"
+                    onchange="updateTextInput(this.value);">
+                  <input id="input" type="range" min="0" value="0" max="6" step="1">
+                  {{!-- <div id="output"></div> --}}
+                  <input type="number" name="price" id="output">
+
+                  <label for="">Price </label>
+                  <input type="text" id="textInput" value="" style="width:50px ;" name="price" readonly>
+                </div>
+
+                <div class="md-form mb-4">
+
+                  <hr>
+                  <br>
+
+                  <h5>Bed</h5>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bed" id="inlineRadio1" value="1">
+                    <label class="form-check-label" for="inlineRadio1">1</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bed" id="inlineRadio2" value="2">
+                    <label class="form-check-label" for="inlineRadio2">2</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bed" id="inlineRadio3" value="3">
+                    <label class="form-check-label" for="inlineRadio3">3</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bed" id="inlineRadio3" value="4">
+                    <label class="form-check-label" for="inlineRadio3">4</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bed" id="inlineRadio3" value="5">
+                    <label class="form-check-label" for="inlineRadio3">5</label>
+                  </div>
+
+
+
+                </div>
+
+                <div class="md-form mb-4">
+
+                  {{!-- ==================================== Bathrooms radio button ===================================
+                  --}}
+                  <hr>
+                  <br>
+                  <h5>Bathroom</h5>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bathroom" id="inlineRadio1" value="1">
+                    <label class="form-check-label" for="inlineRadio1">1</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bathroom" id="inlineRadio2" value="2">
+                    <label class="form-check-label" for="inlineRadio2">2</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bathroom" id="inlineRadio3" value="3">
+                    <label class="form-check-label" for="inlineRadio3">3</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bathroom" id="inlineRadio3" value="4">
+                    <label class="form-check-label" for="inlineRadio3">4</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="bathroom" id="inlineRadio3" value="5">
+                    <label class="form-check-label" for="inlineRadio3">5</label>
+                  </div>
+
+
+
+                </div>
+
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                {{!-- <a href="/users/filters?priceRange=price_range & bed=bed" class="btn btn-indigo"
+                  type="submit">Filter</a> --}}
+                <button class="btn btn-indigo" type="submit">Save <i class="fas fa-paper-plane-o ml-1"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {{!-- <div class="mt-2">
+          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal"
+            data-target="#modalSubscriptionForm">filters <span><i class="fa fa-filter text-dark"
+                aria-hidden="true"></i></span></a>
+        </div> --}}
+
+      </form>
+      
+      {{!-- ================================================== list card ============== -- --}}
+      <link rel="stylesheet" href="/stylesheets/card-list.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        {{!-- {{#if message}}
+          <div class="alert alert-danger mt-4">
+              {{message}}
+          </div>
+          {{/if}} --}}
+ {{!-- {{#if message}}
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <div>
+   {{message}}
+  </div>
+</div>
+{{/if}} --}}
+ {{#if message}}
+<div class="alert alert-danger d-flex align-items-center mt-5" role="alert">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </svg>
+  <div>
+    {{message}}
+  </div>
+</div>
+
+{{/if}}
+ {{#if daysZeroErr}}
+<div class="alert alert-danger d-flex align-items-center mt-5" role="alert">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </svg>
+  <div>
+    {{daysZeroErr}}
+  </div>
+</div>
+
+{{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {{#each rooms}}
+      <div class="container mt-2 ">
+        <div class="d-flex justify-content-center row">
+          <div class="col-md-10">
+
+            <div class="row p-2 bg-white border rounded">
+
+              <div class="col-md-3 mt-1 hover-zoom"> <a href="/users/single-room-page?id={{this._id}}"> <img
+                    class="img-fluid img-responsive rounded product-image w-300  position-relative"
+                    src="/images/rooms-img/{{this.all_images.[0].main_img}}">
+                  {{#if this.percentage_discount}}
+                  <span style="font-size:12px ;"
+                    class="position-absolute top-0 start-0 translate-middle p-2 bg-success border border-light rounded-circle text-white ms-3 mt-2">
+                    <strong>{{this.percentage_discount}}&percnt;</strong>
+                  </span>
+                  {{/if}}
+                </a>
+              </div>
+
+
+              <div class="col-md-6 mt-1">
+                <a href="" class="link-dark">
+                  <h5 class="text-break" id="room_name">{{this.room_name}}</h5>
+                </a>
+                <div class="text-muted" id="room_type">{{this.room_type}}</div>
+                <div class="d-flex flex-row">
+                  <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                      class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
+                </div>
+                <div class="mt-1 mb-1 spec-1">
+                  {{#if this.freature.[0].free_wifi}}
+                  <i class="fa-solid fa-wifi" style="color:blue;"></i><span
+                    class="ms-1 me-2">{{this.freature.[0].free_wifi}}</span>
+                  {{/if}}
+
+                  {{#if this.freature.[0].free_parking}}
+                  <i class="fas fa-parking" style="color:blue;"></i><span
+                    class="ms-1 me-2">{{this.freature.[0].free_parking}}</span>
+                  {{/if}}
+
+                  {{#if this.freature.[0].breakfast}}
+                  <i class="fas fa-hamburger" style="color:blue;"></i><span
+                    class="ms-1 me-2">{{this.freature.[0].breakfast}}<br></span>
+                  {{/if}}
+                </div>
+
+                <div class="mt-1 mb-1 spec-1">
+                  {{#if this.freature.[0].Hour_24}}
+                  <i class="fa-regular fa-clock" style="color:blue;"></i><span
+                    class="ms-1 me-2">{{this.freature.[0].Hour_24}}</span>
+                  {{/if}}
+                  {{#if this.freature.[0].bar}}
+                  <i class="fa-solid fa-champagne-glasses" style="color:blue;"></i><span
+                    class="ms-1 me-2">{{this.freature.[0].bar}}</span>
+                  {{/if}}
+                  {{#if this.freature.[0].business_facilities}}
+                  <i class="fa fa-handshake-o" style="color:blue;"></i></span><span
+                    class="ms-1 me-2">{{this.freature.[0].business_facilities}}<br></span>
+                  {{/if}}
+                </div>
+
+                <p class="text-justify text-truncate para mb-0 ">{{this.description}}<br><br>
+                </p>
+
+              </div>
+              <div class="align-items-center align-content-center col-md-3 border-start mt-1">
+                <div class="d-flex flex-row align-items-center">
+                  <h4 class="mr-1">&#8377;{{this.total}}</h4>
+                  <span class="text-decoration-line-through">&#8377;{{this.max_price}}</span>
+
+                  {{#if this.percentage_discount}}
+                  <span class="ms-2 text-success"> <strong> {{this.percentage_discount}}&percnt;</span><span
+                    class="ms-2 text-success">Off</strong></span>
+                  {{/if}}
+                </div>
+                {{#if this.security_deposit}}
+                <p class="" style="font-size: 14px;">&#8377;{{this.security_deposit}}<span class="ms-1">The Amount can
+                    be refunded</span> </p>
+
+                {{/if}}
+                <div class="d-flex flex-column mt-4">
+                  {{!-- <button class="btn btn-primary btn-sm" type="button">Book Now</button> --}}
+                  <a href="/users/checkout-page?id={{this._id}}" class="btn text-white  btn-sm" style="background-color:#0034a1;">Book Now</a>
+                  <a href="/users/single-room-page?id={{this._id}}&place={{usreRequirements.destination}}"
+                    class="btn btn-outline-primary btn-sm mt-2">Details</a>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      {{/each}}
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<script>
+  function updateTextInput(val) {
+    document.getElementById('textInput').value = val;
+  }
+</script>
+
+{{!-- ================= price Range START ===================== --}}
+<script>
+
+  var values = [1, 3, 5, 10, 20, 50, 100];
+
+  var input = document.getElementById('input'),
+    output = document.getElementById('output');
+  input.oninput = function () {
+    output.innerHTML = values[this.value];
+  };
+  input.oninput();
+</script>
+
+{{!-- ================= price Range END ===================== --}}
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+
+  $('#destination-search').blur(function () {
+
+
+    $.ajax({
+      url: '/users/destination',
+      method: 'POST',
+      data: { place: $("#destination-search").val() },
+      success: (response) => {
+          console.log(response)
+
+           
+
+     
+
+
+  }
+   
+
+
+
+
+ });
+});
+
+
+
+
+</script>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<script>
+  $(function () {
+    $('#destination-search').autocomplete({
+      source: function (req, res) {
+
+        $.ajax({
+          url: "http://localhost:3000/users/autocomplete/",
+          dataType: "jsonp",
+          type: "GET",
+          data: req,
+          success: function (data) {
+           // console.log(data)
+            res(data)
+          },
+          error: function (err) {
+            console.log(err, "Error in Autocomplete")
+          }
+        })
+      },
+
+
+
+      minLength: 1,
+      scroll: true,
+      autoFocus: true,
+      select: function (event, ui) {
+        if (ui.item) {
+          $('#destination-search').text(ui.item.label)
+        }
+      }
+    })
+
+
+
+  })
+
+
+</script>
+
+
+
+
+<script>
+  function calculateHours() {
+    var checkin = document.getElementById('CheckIn').value;
+    var checkout = document.getElementById('CheckOut').value;
+
+    
+    const dateIn = new Date(checkin);
+    const dateout = new Date(checkout);
+    const time = Math.abs(dateout - dateIn);
+    const totalhours = Math.ceil(time / (1000 * 60 * 60));
+    const days = Math.ceil(totalhours / 24)
+    document.getElementById('hour').value = totalhours;
+    document.getElementById('day').value = days;
+    console.log(totalhours)
+  }
+
+</script>
+
+
+
+{{!-- 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+ --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- =============================================== second card =============================== --}}
+{{!-- There are many variations of passages of Lorem Ipsum
+available, but the majority have suffered alteration in some form, by injected humour, or
+randomised words which don't look even slightly believable. --}}
+
+
+
+
+{{!-- ==================================================== modal signup ============== --}}
+
+{{!-- <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="email" id="orangeForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <input type="password" id="orangeForm-pass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-deep-orange">Sign up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
+    Modal Register Form</a>
+</div> --}}
+
+
+
+{{!-- ============================================================================================ --}}
+
+<!-- Gallery -->
+{{!-- <div class="row">
+  <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+      class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
+
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp" class="w-100 shadow-1-strong rounded mb-4"
+      alt="Wintry Mountain Landscape" />
+  </div>
+
+  <div class="col-lg-4 mb-4 mb-lg-0">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp" class="w-100 shadow-1-strong rounded mb-4"
+      alt="Mountains in the Clouds" />
+
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+      class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
+  </div>
+
+  <div class="col-lg-4 mb-4 mb-lg-0">
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
+      class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
+
+    <img src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp" class="w-100 shadow-1-strong rounded mb-4"
+      alt="Yosemite National Park" />
+  </div>
+</div> --}}
+<!-- Gallery -->

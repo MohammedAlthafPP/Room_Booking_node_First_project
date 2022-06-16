@@ -1,0 +1,665 @@
+{{!-- <section class="vh-100" style="background-color: #2779e2;">
+
+  <div class="container h-100">
+    <form action="/admin/room-edit/{{rooms._id}}" method="POST" enctype="multipart/form-data">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-9">
+
+          <h1 class="text-white mb-4">Edit-Room here</h1>
+          <p class="text-center bg-success text-white fw-bold fs-3">{{this.message}}</p>
+          <p class="text-center bg-danger text-white fw-bold fs-3">{{this.messageerr}}</p>
+          <div class="card" style="border-radius: 15px;">
+
+            <div class="card-body">
+              <div class="row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">Room Name</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+
+                  <input type="text" class="form-control form-control-lg" name="room_name" value="{{rooms.room_name}}"
+                    required />
+
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">Type</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+
+                  <input type="text" class="form-control form-control-lg" name="room_type" value="{{rooms.room_type}}"
+                    required />
+
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">Description</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+
+                  <input class="form-control" rows="3" name="description" value="{{rooms.description}}"></input>
+
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+
+                  <h6 class="mb-0">Upload images</h6>
+
+                </div>
+                <div class="col-md-9 pe-5">
+                  <p class="text-danger">{{this.imgmessage}}</p>
+                  <img class="mb-3" src="/images/rooms-img/{{this.rooms.images}}" alt=""
+                    style="width: 150px;px;,height:150px;" id="imgview">
+
+                  <input class="form-control form-control-lg" id="formFileLg" type="file" name="images"
+                    onchange="viewImage(event)" value="{{rooms.images}}" />
+                  <div class="small text-muted mt-2">Upload your images. Max file
+                    size 50 MB</div>
+
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+
+              <div class="px-5 py-4">
+                <button type="submit" class="btn btn-primary btn-lg">submit</button>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+  function viewImage(event) {
+    document.getElementById('imgview').src = URL.createObjectURL(event.target.files[0])
+  }
+</script>
+
+--}}
+
+
+
+{{!-- ================================================================= edit rooms
+========================================================= --}}
+
+
+<section class="" style="background-color: #f5f9fc; margin: 0;">
+
+  <div class="container h-100">
+    <form action="/admin/room-edit/{{rooms._id}}" method="POST" enctype="multipart/form-data">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-9">
+
+          <h1 class="mb-4  mt-3 "   style="color:#5c60f5;">Edit Rooms here</h1>
+          <p class="text-center bg-success text-white fw-bold fs-3">{{this.message}}</p>
+          <p class="text-center bg-danger text-white fw-bold fs-3">{{this.messageerr}}</p>
+          <div class="card" style="border-radius: 15px;">
+
+            <div class="card-body">
+
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">ROOM ID</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="product_id" name="room_id" placeholder="ROOM ID" class="form-control" required=""
+                    type="text" value="{{rooms.room_id}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">ROOM NAME</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="product_id" name="room_name" placeholder="ROOM NAME" class="form-control" required=""
+                    type="text" value="{{rooms.room_name}}">
+                  {{!-- <input type="text" class="form-control form-control-lg" name="room_name" required /> --}}
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">ROOM TYPE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <select name="room_type" id="room_type"
+                    class="form-control input-md mt-3 form-select form-select-lg mb-3 ">
+
+                    <option value="{{rooms.room_type}}">{{rooms.room_type}}</option>
+                    <option value="Single">Single</option>
+                    <option value="Double">Double</option>
+                    <option value="Queen">Queen</option>
+                    <option value="Suite">Suite</option>
+                    <option value="Apartments">Apartments</option>
+                    <option value="Villa">Villa</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">DESCRIPTION</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input class="form-control" rows="3" name="description" required placeholder="DESCRIPTION"
+                    value="{{rooms.description}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">AVAILABLE ROOMS</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="available_quantity" name="available_roomS" placeholder="AVAILABLE ROOMS"
+                    class="form-control " required="" type="number" value="{{rooms.available_roomS}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">PRICE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input class="form-control" id="product_descripti" name="room_price" type="number" placeholder="PRICE"
+                    value="{{rooms.room_price}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">PERCENTAGE OF DISCOUNT</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input class="form-control" id="product_name_fr" name="percentage_discount" type="number"
+                    placeholder="PERCENTAGE OF DISCOUNT" value="{{rooms.percentage_discount}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">MAX PRICE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="percentage_discount" name="max_price" placeholder="MAX AMOUNT" class="form-control"
+                    required="" type="number" value="{{rooms.max_price}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">SERVICE CHARGE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="percentage_discount" name="service_charge" placeholder="SERVICE CHARGE"
+                    class="form-control" required="" type="number" value="{{rooms.service_charge}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">GST</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  {{!-- <input id="percentage_discount" name="tax_percentage" placeholder="SELECT GST"
+                    class="form-control" required="" type="number"> --}}
+                  <label for="">GST Rates for Hotels based on Room Tariff</label>
+
+                  <select name="tax_percentage" placeholder="GST Rates for Hotels based on Room Tariff" id="SELECT GST"
+                    class="form-control mt-3 form-select form-select-lg mb-3">
+                    <option value="{{rooms.tax_percentage}}" style="color:green;">Selected GST
+                      :{{rooms.tax_percentage}}&#37;</option>
+                    <option value="0">&lt Rs.1,000 - No Tax</option>
+                    <option value="12">Greater than INR 1001 but lesser than 7500 - 12%</option>
+                    <option value="18">Greater than INR 7500 - 18%</option>
+                  </select>
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">SECURITY DEPOSIT</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="percentage_discount" name="security_deposit" placeholder="SECURITY DEPOSIT"
+                    class="form-control" required="" type="number" value="{{rooms.security_deposit}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">PLACE</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="stock_alert" name="place" placeholder="PLACE" class="form-control input-md" required=""
+                    type="text" value="{{rooms.place}}">
+                </div>
+              </div>
+
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">DISTRICT</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+
+
+                  <select name="district" id="cars" class="form-control mt-3 form-select form-select-lg mb-3">
+                    <option value="{{rooms.district}}" style="color: green;">{{rooms.district}}</option>
+                    <option value="Malappuram">Malappuram</option>
+                    <option value="Kozhikode">Kozhikode</option>
+                    <option value="Palakkad">Palakkad</option>
+                    <option value="Wayanad">Wayanad</option>
+                    <option value="Alappuzha">Alappuzha</option>
+                    <option value="Kannur">Kannur</option>
+                    <option value="Ernakulam">Ernakulam</option>
+                    <option value="Idukki">Idukki</option>
+                  </select>
+
+                </div>
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">STATE</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input id="stock_critical" name="state" placeholder="STATE" class="form-control " required=""
+                  type="search" value="{{rooms.state}}">
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">HOW MANY FROM CENTER/TOWN</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input id="how_km" name="how_many_km" placeholder="HOW MANY FROM CENTER/TOWN" class="form-control"
+                  required="" type="text" value="{{rooms.how_many_km}}0">
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">ADDRESS</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input id="how_km" name="address" placeholder="ADDRESS" class="form-control" required="" type="text"
+                  value="{{rooms.address}}">
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">BATHROOMS</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <select name="bathrooms" placeholder="Bathrooms" id="bathrooms"
+                  class="form-control mt-3 form-select form-select-lg mb-3">
+                  <option value="{{rooms.bathrooms}}" style="color:green ;">{{rooms.bathrooms}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">BED</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <select name="bed" placeholder="COUNT OF BEDS" id="BEDROOMS"
+                  class="form-control mt-3 form-select form-select-lg mb-3">
+                  <option value="{{rooms.bed}}" style="color:green ;">{{rooms.bed}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">MOST POPULAR FACILITIES {{freature.[0].free_parking}}</h6>
+                <p>{{rooms.freature.[0].free_wifi}}</p>
+              </div>
+              <div class="col-md-9 pe-5">
+
+
+                {{#if rooms.freature.[0].free_wifi}}
+
+                <div class="form-check form-check-inline m-3">
+                  <input class="form-check-input" type="checkbox" name="free_wifi" id="inlineCheckbox1" value="Free WiFi"
+                    checked />
+                  <label class="form-check-label" for="inlineCheckbox1">Free WiFi</label>
+                </div>
+                {{else}}
+
+                <div class="form-check form-check-inline m-3">
+                  <input class="form-check-input" type="checkbox" name="free_wifi" id="inlineCheckbox1"
+                    value="Free WiFi" />
+                  <label class="form-check-label" for="inlineCheckbox1">Free WiFi</label>
+                </div>
+                {{/if}}
+
+                 {{#if rooms.freature.[0].free_parking}}
+
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="free_parking" id="inlineCheckbox2"
+                    value="Free parking" checked/>
+                  <label class="form-check-label" for="inlineCheckbox2">Free parking</label>
+                </div>
+                 {{else}}
+                 <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="free_parking" id="inlineCheckbox2"
+                    value="Free parking"/>
+                  <label class="form-check-label" for="inlineCheckbox2">Free parking</label>
+                </div>
+                 {{/if}}
+
+                {{#if rooms.freature.[0].breakfast}}
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="breakfast" id="inlineCheckbox3"
+                    value="Breakfast Included" checked/>
+                  <label class="form-check-label" for="inlineCheckbox3">Breakfast Included</label>
+                </div>
+                 {{else}}
+                  <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="breakfast" id="inlineCheckbox3"
+                    value="Breakfast Included" />
+                  <label class="form-check-label" for="inlineCheckbox3">Breakfast Included</label>
+                </div>
+                 {{/if}}
+
+                  {{#if rooms.freature.[0].Hour_24}}
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="Hour_24" id="inlineCheckbox3"
+                    value="24-Hour Front Desk" checked />
+                  <label class="form-check-label" for="inlineCheckbox3">24-Hour Front Desk</label>
+                </div>
+                {{else}}
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="Hour_24" id="inlineCheckbox3"
+                    value="24-Hour Front Desk" />
+                  <label class="form-check-label" for="inlineCheckbox3">24-Hour Front Desk</label>
+                </div>
+                 {{/if}}
+
+                  {{#if rooms.freature.[0].bar}}
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="bar" id="inlineCheckbox3" value="Bar" checked/>
+                  <label class="form-check-label" for="inlineCheckbox3">Bar</label>
+                </div>
+                {{else}}
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="bar" id="inlineCheckbox3" value="Bar" />
+                  <label class="form-check-label" for="inlineCheckbox3">Bar</label>
+                </div>
+                 {{/if}}
+
+                   {{#if rooms.freature.[0].business_facilities}}
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="business_facilities" id="inlineCheckbox3"
+                    value="Business Facilities" checked/>
+                  <label class="form-check-label" for="inlineCheckbox3">Buniness Facilities</label>
+                </div>
+                {{else}}
+                <div class="form-check form-check-inline  m-3">
+                  <input class="form-check-input" type="checkbox" name="business_facilities" id="inlineCheckbox3"
+                    value="Business Facilities" />
+                  <label class="form-check-label" for="inlineCheckbox3">Buniness Facilities</label>
+                </div>
+                 {{/if}}
+              </div>
+            </div>
+
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">FEATURES OF ROOM</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input id="author" name="features_of_room" placeholder="FEATURES OF ROOM" class="form-control"
+                  required="" type="text" value="{{rooms.features_of_room.[0]}}">
+                <input id="author" name="features_of_room" placeholder="FEATURES OF ROOM" class="form-control"
+                  required="" type="text" value="{{rooms.features_of_room.[1]}}">
+                <input id="author" name="features_of_room" placeholder="FEATURES OF ROOM" class="form-control"
+                  required="" type="text" value="{{rooms.features_of_room.[2]}}">
+                <input id="author" name="features_of_room" placeholder="FEATURES OF ROOM" class="form-control"
+                  type="text" value="{{rooms.features_of_room.[3]}}">
+                <input id="author" name="features_of_room" placeholder="FEATURES OF ROOM" class="form-control"
+                  type="text" value="{{rooms.features_of_room.[4]}}">
+                <input id="author" name="features_of_room" placeholder="FEATURES OF ROOM" class="form-control"
+                  type="text" value="{{rooms.features_of_room.[5]}}">
+              </div>
+            </div>
+
+            <hr class="mx-n3">
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+                <h6 class="mb-0">ACTIVIES</h6>
+              </div>
+              <div class="col-md-9 pe-5">
+                <input id="enable_display" name="activities" placeholder="ACTIVIES" class="form-control" required=""
+                  type="text" value="{{rooms.activities.[0]}}">
+                <input id="enable_display" name="activities" placeholder="ACTIVIES" class="form-control" required=""
+                  type="text" value="{{rooms.activities.[1]}}">
+                <input id="enable_display" name="activities" placeholder="ACTIVIES" class="form-control" required=""
+                  type="text" value="{{rooms.activities.[2]}}">
+                <input id="enable_display" name="activities" placeholder="ACTIVIES" class="form-control" type="text"
+                  value="{{rooms.activities.[3]}}">
+                <input id="enable_display" name="activities" placeholder="ACTIVIES" class="form-control" type="text"
+                  value="{{rooms.activities.[4]}}">
+              </div>
+            </div>
+
+
+            <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">main_image</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+                <p class="text-danger">{{this.imgmessage}}</p>
+                <br>
+                {{!-- <img class="mb-3" src="/images/rooms-img/{{this.rooms.images}}" alt=""
+                  style="width: 150px;px;,height:150px;" id="imgview"> --}}
+                <img class="mb-3" src="/images/rooms-img/{{rooms.all_images.[0].main_img}}" alt=""
+                  style="width: 150px;,height: 150;" id="imgviews">
+                <input class="form-control form-control-lg" id="formFileLg" type="file" multiple name="images"
+                  onchange="viewImage(event)" value="{{rooms.all_images.[0].main_img}}" />
+                <div class="small text-muted mt-2">Upload your images. Max file size 3 MB</div>
+                <div class="small text-muted mt-2">{{rooms.all_images.[0].main_img}}</div>
+
+              </div>
+            </div>
+
+
+
+            <hr class="mx-n3">
+
+            <div class="row align-items-center py-3">
+              <div class="col-md-3 ps-5">
+
+                <h6 class="mb-0">aux_image 1</h6>
+
+              </div>
+              <div class="col-md-9 pe-5">
+                <p class="text-danger">{{this.imgmessage}}</p>
+                <br>
+                <img class="mb-3" src="/images/rooms-img/{{rooms.all_images.[0].aux_img_1}}" alt=""
+                  style="width: 150px;,height: 150;" id="imgviews_1">
+                <input class="form-control form-control-lg" id="formFileLg" type="file" name="image_1"
+                  onchange="viewImage_1(event)" value="{{rooms.all_images.[0].aux_img_1}}"/>
+                <div class=" small text-muted mt-2">Upload your images. Max file size 3 MB</div>
+                <div class=" small text-muted mt-2">{{rooms.all_images.[0].main_img}}</div>
+
+            </div>
+          </div>
+
+          <hr class="mx-n3">
+
+          <div class="row align-items-center py-3">
+            <div class="col-md-3 ps-5">
+
+              <h6 class="mb-0">aux_image 2</h6>
+
+            </div>
+            <div class="col-md-9 pe-5">
+              <p class="text-danger">{{this.imgmessage}}</p>
+              <br>
+              <img class="mb-3" src="/images/rooms-img/{{rooms.all_images.[0].aux_img_2}}" alt=""
+                style="width: 150px;,height: 150;" id="imgviews_2">
+              <input class="form-control form-control-lg" id="formFileLg" type="file" name="image_2"
+                onchange="viewImage_2(event)" value="{{rooms.all_images.[0].aux_img_2}}"/>
+                <div class=" small text-muted mt-2">Upload your images. Max file size 3 MB </div>
+                <div class=" small text-muted mt-2">{{rooms.all_images.[0].main_img}} </div>
+
+          </div>
+        </div>
+
+
+
+
+        <hr class="mx-n3">
+
+        <div class="px-5 py-4">
+          <button type="submit" class="btn btn-primary btn-lg">submit</button>
+
+        </div>
+
+
+
+      </div>
+  </div>
+  </div>
+  </form>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+</style>
+
+
+
+
+<script>
+
+  function viewImage(event) {
+    document.getElementById('imgviews').src = URL.createObjectURL(event.target.files[0])
+  }
+
+  function viewImage_1(event) {
+    document.getElementById('imgviews_1').src = URL.createObjectURL(event.target.files[0])
+  }
+
+  function viewImage_2(event) {
+    document.getElementById('imgviews_2').src = URL.createObjectURL(event.target.files[0])
+  }
+</script>

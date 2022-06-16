@@ -1,0 +1,603 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/checkout-page.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  {{!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
+
+
+
+</head>
+
+
+<link rel="stylesheet" href="/stylesheets/checkout-page.css">
+
+
+
+<section class="background_image "
+  style="background-image: url('/images/rooms-img/{{rooms.all_images.[0].main_img}}'); ">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="container py-5">
+
+      {{#if massege}}
+      <div class="alert alert-danger">
+        {{ massege}}
+      </div>
+      {{/if}}
+      <div class="card" style="opacity:75%;">
+        <div class="card-body">
+          <div class="row d-flex justify-content-center pb-5">
+            <div class="col-md-7 col-xl-5 mb-4 mb-md-0">
+              <div class="py-4 d-flex flex-row">
+                <h5><span class="far fa-check-square pe-2"></span><b>ELIGIBLE</b> |</h5>
+                <span class="ps-2">Pay</span>
+              </div>
+              <h4 class="text-success">$85.00</h4>
+              <h4>Diabetes Pump & Supplies</h4>
+              <div class="d-flex pt-2">
+                <div>
+                  <p>
+                    <b>{{rooms.room_name}}<span class="text-success"></span></b><span>
+                      <p class="text-muted">{{rooms.room_type}}</p>
+                    </span>
+                  </p>
+
+
+                </div>
+                {{!-- <div class="ms-auto">
+                  <p class="text-primary">
+                    <i class="fas fa-plus-circle text-primary pe-1"></i>Add insurance card
+                  </p>
+                </div> --}}
+              </div>
+              <p>
+                Insurance claims and all necessary dependencies will be submitted to your
+                insurer for the coverred portion of this order
+              </p>
+
+
+
+              <form class="pb-3" action="/Mobilenumber" method="post" id="checkout-form">
+                <div class="rounded " style="background-color: hsl(210, 17%, 98%);">
+
+                  <input type="number" style="width:100% ; height:40px ; border: 0; display: block; font-size:20px;"
+                    class="" placeholder="Enter your Phone Number" id="mobilePhone" name="mobile">
+
+
+
+                  <input type="text" name="user_id" value="{{user._id}}" hidden>
+                  <input type="text" name="Room_id" value="{{rooms._id}}" hidden>
+
+                </div>
+                <hr />
+                <div class="pt-2">
+                  <div class="d-flex pb-2">
+                    <div>
+                      <p>
+                        <b>Patient Balance <span class="text-success">$13.24</span></b>
+                      </p>
+                    </div>
+                    {{!-- <div class="ms-auto">
+                      <p class="text-primary">
+                        <i class="fas fa-plus-circle text-primary pe-1"></i>Add payment card
+                      </p>
+                    </div> --}}
+                  </div>
+                  <p>
+                    This is an estimate for the portion of your order (not covered by
+                    insurance) due today . once insurance finalizes their review refunds
+                    and/or balances will reconcile automatically.
+                  </p>
+
+                  <div class="d-flex flex-row pb-3" style="visibility: hidden;">
+                    <div class="d-flex align-items-center pe-2">
+                      <input class="form-check-input" type="radio" id="radioNoLabel1" aria-label="..." hidden />
+                    </div>
+                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                      <p class="mb-0">
+                        <i class="fa-solid fa-hotel  text-dark pe-2"></i>Pay at Hotel
+                      </p>
+                      {{!-- <div class="ms-auto">************3456</div> --}}
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row" style="visibility: hidden;">
+                    <div class="d-flex align-items-center pe-2">
+                      <input class="form-check-input" type="hidden" id="radioNoLabel2" aria-label="..." />
+                    </div>
+                    <div class="rounded border d-flex w-100 p-3 align-items-center">
+                      <p class="mb-0">
+                        <i class="fab fa-cc-visa fa-lg  text-dark pe-2"></i>Debit/Credit card or UPI
+                      </p>
+                      {{!-- <div class="ms-auto">************1038</div> --}}
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-block btn-lg" type="submit">Proceed to payment</button>
+                  {{!-- <input type="button" value="Proceed to payment" class="btn btn-primary btn-block btn-lg" /> --}}
+
+
+                  <!-- Button trigger modal -->
+                  {{!-- <button type="submit" class="btn btn-primary" data-bs-toggle="modal">
+                    Launch static backdrop modal
+                  </button> --}}
+
+              </form>
+
+            </div>
+          </div>
+
+          <div class="col-md-5 col-xl-4 offset-xl-1">
+            <div class="py-4 d-flex justify-content-end">
+              <h6><a href="/users/homepage">Cancel and return to website</a></h6>
+            </div>
+            <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;">
+              <div class="p-2 me-3">
+                <h4>Booking Recap</h4>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Price</div>
+                <div class="ms-auto">&#8377; <span>{{rooms.room_price}}</span></div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Service Charge</div>
+                <div class="ms-auto">&#8377; <span>{{rooms.service_charge}}</span></div>
+              </div>
+              {{#if rooms.discount}}
+              <div class="p-2 d-flex">
+                <div class="col-8 ">Discount <span class="text-success">{{rooms.percentage_discount}}&#37;</span></div>
+                <div class="ms-auto text-success"><span class="me-1">&#45;</span>&#8377; <span>{{rooms.discount}}</div>
+              </div>
+
+              {{/if}}
+
+              {{#if rooms.security_deposit}}
+              <div class="p-2 d-flex">
+                <div class="col-8 ">Security Deposit </div>
+                <div class="ms-auto text-success">&#8377; <span>{{rooms.security_deposit}}</div>
+              </div>
+
+              {{/if}}
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8">Total <p class="text-muted" style="font-size:12px ;">(inclusive of all taxes)</p>
+                </div>
+
+
+                <div class="ms-auto">&#8377; <span>{{rooms.total}}</div>
+              </div>
+              {{#if rooms.security_deposit}}
+              <div class="p-2 d-flex">
+                <div class="col-8 ">The Amount can be refunded </div>
+                <div class="ms-auto text-success">&#8377; <span>{{rooms.security_deposit}}</div>
+              </div>
+              {{/if}}
+
+
+
+
+
+              {{!-- <div class=" text-success d-flex">
+                <form action="/admin/applyCoupon" method="post" class="d-flex">
+                  <input type="text" name="couponCode" class="border-0 border-bottom-1">
+                  <input type="text" name="room_id" value="{{rooms._id}}" hidden>
+
+                </form>
+              </div> --}}
+
+              <div class="border-top px-2 mx-2"></div>
+              {{!-- <div class="p-2 d-flex pt-3">
+                <div class="col-8">Check-In</div>
+                <div class="ms-auto"><b>&#8377; <span>{{searchDetails.checkin}}</b></div>
+              </div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8">Check-Out</div>
+                <div class="ms-auto"><b>&#8377; <span>{{searchDetails.checkout}}</b></div>
+              </div> --}}
+              {{!-- <div class="p-2 d-flex pt-3">
+                <div class="col-8">Adult</div>
+                <div class="ms-auto font-weight-bold"><b><span>{{searchDetails.adult}}</b></div>
+              </div> --}}
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8">Days</div>
+                <div class="ms-auto font-weight-bold "><b><span>{{searchDetails.days}}X</b></div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">
+                  Rooms<span class="fa fa-question-circle text-dark"></span>
+                </div>
+                <div class="ms-auto font-weight-bold" id="RoomCount"><b>{{processdata.Roomscount}}X</b></div>
+              </div>
+
+
+
+              <form action="" method="post" id="check-room-add">
+                <div class="p-2 d-flex">
+                  <div class="col-8">
+                    Adult<span></span>
+                  </div>
+                  <input type="number" name="adult"
+                    class="border-0 border-bottom-1 ms-auto bg-transparent font-weight-bold" placeholder="Rooms"
+                    style="width:40px;height: 40px; padding-left: 15px; " value="{{searchDetails.adult}}"
+                    autocomplete="off">
+                </div>
+
+                <div class="p-2 d-flex">
+                  <div class="col-8">
+                    Rooms<span class=" text-dark"></span>
+                  </div>
+                  <input type="number" name="room"
+                    class="border-0 border-bottom-1 ms-auto bg-transparent font-weight-bold" placeholder="Rooms"
+                    style="width:40px;height: 40px; padding-left: 15px; " value="{{processdata.Roomscount}}"
+                    autocomplete="off">
+
+                  <input type="text" name="destination" value="{{searchDetails.destination}}" hidden>
+                  <input type="text" name="checkin" value="{{searchDetails.checkin}}" hidden>
+                  <input type="text" name="checkout" value="{{searchDetails.checkout}}" hidden>
+                  <input type="text" name="hours" value="{{searchDetails.hours}}" hidden>
+                  <input type="text" name="days" value="{{searchDetails.days}}" hidden>
+                  <input type="text" name="Room_id" value="{{rooms._id}}" hidden>
+
+                </div>
+
+
+                <div class="p-2 d-flex" style="color:orangered;">
+                  <div class="col-8" id="roomtexr">
+
+                  </div>
+                  <div class="ms-auto font-weight-bold" id="roomtexrValue"><b></b></div>
+                </div>
+
+
+
+                <div class="p-2 d-flex  justify-content-end mb-2 ">
+
+
+                  <button class="btn btn-primary" type="submit">submit</button>
+
+
+                </div>
+              </form>
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex">
+                <form action="" id="coupon-form" method="post" class="d-flex">
+                  <div class="col-8 d-flex">
+
+                    <input type="text" name="couponCode" class="border-0 border-bottom-1"
+                      placeholder="Enter Coupon code" style="width: ;height: 40px; padding-left: 15px; ">
+                  </div>
+
+                  <div class=" ms-auto text-success d-flex justify-content-end">
+
+                    <button class="btn btn-primary" type="submit"> Apply </button>
+
+
+                  </div>
+
+                </form>
+              </div>
+
+
+
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8" id="totalpricelabel"><b>Total</b></div>
+
+                <div class="ms-auto"><b class="text-success">&#8377;
+                    <span id="RoomParice">{{processdata.RoomPrice}}</span></b></div>
+              </div>
+
+              <div class="p-2 d-flex">
+                <div class="col-8 ">
+                  <p id="discount"></p>
+                </div>
+                <div class=" ms-auto text-success d-flex">
+                  <p id="discountValue"></p>
+                </div>
+              </div>
+
+
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8" id="finalfare"><b></b></div>
+                <div class="ms-auto"><b class="text-success"> <span id="finalfareValue"></span> </b></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<style>
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+</style>
+
+
+<style>
+  textarea:focus,
+  input:focus {
+    outline: none;
+  }
+</style>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+  $(document).ready(function () {
+    $('#check-room-add').submit(function (e) {
+      e.preventDefault()
+
+      $.ajax({
+        url: '/users/checkoutDatesubmition',
+        method: 'POST',
+        data: $('#check-room-add').serialize(),
+        success: (response) => {
+          console.log(response, "respose")
+          if (response.isRoomCount) {
+
+            let RoomPrice = '';
+            let Roomscount = '';
+
+            RoomPrice = `${response.processdata.RoomPrice}`;
+            Roomscount = `${response.processdata.Roomscount}`;
+            console.log(RoomPrice)
+
+            document.getElementById('RoomParice').innerHTML = RoomPrice;
+            document.getElementById('RoomCount').innerHTML = Roomscount + `X`;
+            document.getElementById('roomtexr').innerHTML = "the room count changed to ";
+            document.getElementById('roomtexrValue').innerHTML = Roomscount + `X`;
+
+
+
+
+
+          } else {
+            let RoomPrice = '';
+            let Roomscount = '';
+
+            RoomPrice = `${response.RoomPrice}`;
+            Roomscount = `${response.Roomscount}`;
+
+            console.log(RoomPrice)
+
+
+            document.getElementById('RoomParice').innerHTML = RoomPrice;
+            document.getElementById('RoomCount').innerHTML = Roomscount + `X`;
+
+            document.getElementById('roomtexr').innerHTML = "";
+            document.getElementById('roomtexrValue').innerHTML = "";
+
+          }
+
+          $(' #usernavbar').load(' #usernavbar')
+        }
+
+
+      });
+    });
+
+  })
+
+
+
+
+
+</script>
+
+
+
+
+<script>
+
+  $("#coupon-form").submit((e) => {
+
+    e.preventDefault()
+
+    $.ajax({
+      url: '/users/applyCoupon',
+      method: 'post',
+      data: $('#coupon-form').serialize(),
+      success: (response) => {
+
+        if (response) {
+
+          let getDiscountValue = '';
+          let getDiscountAmount = '';
+
+          getDiscountAmount = `${response.discount}`;
+          getDiscountValue = `${response.finalRent}`;
+
+          console.log(getDiscountAmount, getDiscountValue)
+          alert("Coupon Adding")
+          document.getElementById('discount').innerHTML = "Coupon Discount";
+          document.getElementById('discountValue').innerHTML = getDiscountAmount;
+          document.getElementById('finalfare').innerHTML = "Grand total";
+          document.getElementById('finalfareValue').innerHTML = `&#8377; ` + getDiscountValue;
+
+
+        } else {
+          alert("failed response")
+        }
+
+      }
+    })
+
+  })
+
+</script>
+
+
+
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  $("#checkout-for").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: '/place-order',
+      method: 'post',
+      data: $('#checkout-for').serialize(),
+      success: (response) => {
+        alert("Sucessfully Completed")
+        if (response.pahSuccess) {
+          location.href = '/users/order-Success'
+        } else {
+          razorpayPay(response)
+        }
+
+      }
+    })
+
+  })
+
+
+
+  function razorpayPay(order) {
+    console.log(order, "order")
+    var options = {
+      "key": "rzp_test_ucfp9mDCox69xP", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "BluePearl Hotels",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+
+        verifyPayment(response, order)
+
+      },
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+
+
+  }
+
+
+  function verifyPayment(payment, order) {
+    console.log(payment, "AAAAAAAAAAAAAAAa")
+    console.log(order, "BBBBBBBBBBB")
+    $.ajax({
+      url: '/verify-payment',
+      data: {
+        payment,
+        order
+      },
+      method: 'post',
+      success: (response) => {
+        if (response.status) {
+          console.log('abcd')
+          location.href = '/users/order-Success'
+        } else {
+          alert("payment failed")
+        }
+      }
+    })
+  }
+
+
+</script>
+
+
+{{!-- 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ --}}
+
+
+{{!-- ========================================= Checkout Phone PhoneNumber Validation
+================================================= --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+<script>
+
+
+  $(document).ready(function () {
+    $("#checkout-form").validate({
+      errorClass: "err",
+      rules: {
+        mobile: {
+          required: true,
+          minlength: 10,
+          maxlength: 15,
+          phonevalidation: true
+        },
+      },
+      messages: {
+
+        mobile: {
+          required: "Please enter your phone number",
+          minlength: "Enter your 10 digit Mobile number",
+          maxlength: "Number should be less than or equal to 13 numbers"
+        },
+
+
+      }
+    })
+    $.validator.addMethod("phonevalidation", function (value, element) {
+      return /^[6-9]\d{9}$/.test(value);
+    },
+      "Sorry, You have entered an invalid phone number"
+    );
+
+
+  })
+
+</script>
+
+
+
+
+
+
+
+<style>
+  .err {
+    color: red;
+
+  }
+</style>

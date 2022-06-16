@@ -1,0 +1,206 @@
+{{!-- ================================================================ admin oder ============================= --}}
+
+<head>
+
+
+    <link rel="stylesheet" href="/stylesheets/view-booking.css">
+    <link rel="stylesheet" href="/stylesheets/user-profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> --}}
+    <link rel="stylesheet" href="">
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+</head>
+
+<body>
+    <section>
+
+        <div class="container-xl px-4 mt-4">
+            <!-- Account page navigation-->
+            <nav class="nav nav-borders">
+
+                <a class="nav-link ms-0" href="/user-profile?id={{user._id}}">Profile</a>
+                <a class="nav-link" href="/users/user-pro-billing?id={{user._id}}">Billing</a>
+                <a class="nav-link " href="/users/user-change-password">Change Password</a>
+                <a class="nav-link active" href="/users/view-booking?id={{user._id}}">Bookings</a>
+
+            </nav>
+            <hr class="mt-0 mb-4">
+
+            {{!-- <div class="container-xl px-4">
+                <!-- Account page navigation-->
+                <nav class="nav nav-borders">
+
+                    <a class="nav-link ms-0" href="/user-profile?id={{user._id}}">Profile</a>
+                    <a class="nav-link" href="/users/user-pro-billing?id={{user._id}}">Billing</a>
+                    <a class="nav-link " href="/users/user-change-password">Change Password</a>
+                    <a class="nav-link active" href="/users/view-booking?id={{user._id}}">Bookings</a>
+
+                </nav> --}}
+                {{!--
+                <hr class="mt-0 mb-4"> --}}
+
+               
+
+                {{#if bookingDetails}}
+                <div class="container">
+                    <div class=" d-flex justify-content-center">
+                        <div class="table-wrap">
+                            <table class="table table-responsive table-borderless">
+                                <thead>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th>Room</th>
+
+                                    <th>Price</th>
+                                    <th>Rooms</th>
+                                    <th>Adult</th>
+                                    <th>total</th>
+                                    <th>Status</th>
+                                </thead>
+                                <tbody>
+                                    {{#each bookingDetails}}
+                                    <tr class="align-middle alert border-bottom" role="alert">
+                                        <td>
+                                            <input type="checkbox" id="check">
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="/users/single-room-page?id={{this.Room_id}}"
+                                                class="text-decoration-none text-dark"> <img class="pic"
+                                                    src="/images/rooms-img/{{this.room.all_images.[0].main_img}}"
+                                                    alt="">
+                                            </a>
+                                        </td>
+                                        <td> <a href="/users/single-room-page?id={{this.Room_id}}"
+                                                class="text-decoration-none text-dark">
+                                                <div>
+
+                                                    <p class="m-0 fw-bold">{{this.room.room_name}}</p>
+
+                                                    <p class="m-0 text-muted">{{this.room.room_type}}</p>
+
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="fw-600"><span>&#x20B9;</span>{{this.room.total}}</div>
+                                        </td>
+                                        <td class="d-">
+                                            <input class="input" type="text" placeholder="{{this.number_of_Rooms}}">
+                                        </td>
+                                        <td class="d-">
+                                            <input class="input" type="text" placeholder="{{this.adult}}">
+                                        </td>
+
+                                        <td>
+                                            <span>&#x20B9;</span>{{this.total_Price}}
+                                        </td>
+                                        <td>
+                                            {{!-- <div class="btn" data-bs-dismiss="alert">
+                                                <span class="fas fa-times"></span>
+                                            </div> --}}
+                                            {{#if isStatus}}
+                                            <!-- Button trigger modal -->
+                                            {{!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop">
+                                                Cancel
+                                            </button> --}}
+
+
+                                            <a href="/users/cancle-booking?room_id={{this._id}}&R_id={{this.Room_id}}&rc={{this.number_of_Rooms}}"
+                                                class="btn btn-danger"
+                                                onclick="return confirm('Are you sure you want to Cancel the Booking of {{this.room.room_name}}?');">Cancel</a>
+                                            {{else}}
+                                            <span style="color:red;">Booking Cancelled</span>
+
+                                            {{/if}}
+
+                                        </td>
+                                    </tr>
+
+
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Are sure you want
+                                                        to cancel the
+                                                        booking?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="text-wrap">
+                                                        It is a long established fact that a reader will be distracted
+                                                        by the
+                                                        readable content of a page when looking at its layout. The point
+                                                        of using
+                                                        Lorem Ipsum is that it has a more-or-less normal distribution of
+                                                        letters, as
+                                                        opposed to using 'Content here, content here', making it look
+                                                        like readable
+                                                        English. Many desktop publishing packages and web page editors
+                                                        now use Lorem
+                                                        Ipsum as their default model text, and a search for 'lorem
+                                                        ipsum' will
+                                                        uncover many web sites still in their infancy. Various versions
+                                                        have evolved
+                                                        over the years, sometimes by accident, sometimes on purpose
+                                                        (injected humour
+                                                        and the like).
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-success"
+                                                        data-bs-dismiss="modal">No</button>
+                                                    {{!-- <button type="button"
+                                                        class="btn btn-primary">Understood</button> --}}
+                                                    <a href="/users/cancle-booking?room_id={{this._id}}"
+                                                        class="btn btn-danger">Yes</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+
+                <div class="container">
+                    <div class=" d-flex justify-content-center">
+                        <div class="table-wrap">
+                            <table class="table table-responsive table-borderless">
+                                    <h3>No records found</h3>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+{{/if}}
+
+
+
+
+                {{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                    crossorigin="anonymous"></script> --}}
+</body>

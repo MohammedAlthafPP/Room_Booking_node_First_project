@@ -1,0 +1,172 @@
+<!-- Table Start -->
+<div class="container-fluid pt-2 px-4">
+    {{!-- <a href="/admin/addnewcar" class="btn " style="background-color: #FC6414; color: white;">Add New
+        Car</a>
+    <a href="" class="btn ms-3" style="background-color: #FC6414; color: white;">Booked Cars</a> --}}
+    <div class="row g-4 mt-3">
+
+        <div class="col-12">
+
+            <div class="bg-light rounded h-100 ">
+
+                {{!-- <h6 class="mb-4">All Cars</h6> --}}
+
+                <div id="wrapper" class="pt-5">
+
+                    <!-- Content Wrapper -->
+                    <div id="content-wrapper" class="d-flex flex-column pt-3">
+                        <div class="container-fluid">
+                            <!-- DataTales Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Change Status</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                            <thead>
+
+                                                <tr>
+                                                    <th class="font-weight-bold">Room Type</th>
+                                                    <th class="font-weight-bold">Total Nights</th>
+                                                    <th class="font-weight-bold">Rooms</th>
+                                                    <th class="font-weight-bold"> Current Status </th>
+                                                    <th class="font-weight-bold">Price</th>
+                                                    <th class="font-weight-bold">Security Deposit</th>
+                                                    <th class="font-weight-bold"></th>
+
+
+                                                    {{!-- <th>Deposit</th>
+                                                    <th>Options</th> --}}
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>{{viewBookingDetails.[0].room.room_type}}</td>
+                                                    <td>{{viewBookingDetails.[0].total_Days}}</td>
+                                                    <td>{{viewBookingDetails.[0].number_of_Rooms}}</td>
+                                                    <form action="" method="post" id="staying-Status-changing">
+                                                        <input type="text" name="Booking_id"
+                                                            value="{{viewBookingDetails.[0]._id}}" hidden>
+                                                        <input type="text" name="Room_id"
+                                                            value="{{viewBookingDetails.[0].room._id}}" hidden>
+
+                                                        <td>
+                                                            
+                                                            <select class="form-select" id="sel1" name="stayingStatus"
+                                                                style="width:200px;">
+
+                                                                <option
+                                                                    value="{{viewBookingDetails.[0].stayingStatus}}" selected>
+                                                                    {{viewBookingDetails.[0].stayingStatus}}</option>
+                                                                <option value="Not arrived yet">Not arrived yet</option>
+                                                                <option value="Check-in">Check-in</option>
+                                                                <option value="Checkout">Checkout</option>
+                                                                <option value="Staying">Staying</option>
+                                                            </select>
+
+
+                                                        </td>
+
+                                                        <td><span> &#8377; </span>{{viewBookingDetails.[0].total_Price}}
+                                                        </td>
+                                                        <td><span> &#8377;
+                                                            </span>{{viewBookingDetails.[0].room.security_deposit}}</td>
+
+
+                                                        <td></span> <button class="btn btn-primary"> Change
+                                                                Status</button></td>
+                                                    </form>
+                                                </tr>
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+</div>
+<!-- Table End -->
+{{!--=========== admin panel layout js Start ===========--}}
+<!-- JavaScript Libraries -->
+
+<script src="/lib/admin/lib/chart/chart.min.js"></script>
+<script src="/lib/admin/lib/easing/easing.min.js"></script>
+<script src="/lib/admin/lib/waypoints/waypoints.min.js"></script>
+<script src="/lib/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/moment.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Template Javascript -->
+<script src="/javascripts/admin/admin-panel/js/main.js"></script>
+{{!--=========== admin panel layout js End ===========--}}
+<!-- Libraries Stylesheet -->
+<link href="/lib/admin/lib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
+<link href="/lib/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="/stylesheets/admin/admin-panel-css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="/stylesheets/admin/admin-panel-css/style.css" rel="stylesheet">
+{{!--========== Admin panel layout css End ====================--}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('#staying-Status-changing').submit(function (e) {
+            alert('Are you Sure?, You want to Change Status?')
+            e.preventDefault()
+
+            $.ajax({
+                url: '/admin/stayingStatuschanging',
+                method: 'POST',
+                data: $('#staying-Status-changing').serialize(),
+                success: (response) => {
+                    console.log(response, "respose")
+
+
+                  
+                }
+
+
+            });
+        });
+
+    })
+
+
+
+
+
+</script>

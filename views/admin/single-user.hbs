@@ -1,0 +1,221 @@
+{{!-- =================================================================================================================
+--}}
+
+<!-- Table Start -->
+<div class="container-fluid pt-4 px-4">
+
+    <div class="row g-4 mt-3">
+
+        <div class="col-12">
+
+            <div class="bg-light rounded h-100 ">
+
+                {{!-- <h6 class="mb-4">All Cars</h6> --}}
+
+                <div id="wrapper" class="pt-5">
+
+                    <!-- Content Wrapper -->
+                    <div id="content-wrapper" class="d-flex flex-column pt-3">
+                        <div class="container-fluid">
+                            <!-- DataTales Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">More About User</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                            <thead>
+
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Last Name</th>
+                                                    <th>DOB</th>
+                                                    <th>Address</th>
+                                                    <th>Location</th>
+                                                    <th>Edited On</th>
+                                                    <th> Status</th>
+                                                   
+
+                                                 
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class="p-5">
+                                                
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>{{Singleuser.lastname}}</td>
+                                                    <td>{{birthday}}</td>
+                                                    <td>{{Singleuser.address}}</td>
+                                                    <td>{{Singleuser.location}}</td>
+                                                    <td>{{editedOn}}</td>
+                                                    <td>{{Singleuser.status}}</td>
+
+                                                   
+
+                                                </tr>
+                                               
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Table End -->
+{{!--=========== admin panel layout js Start ===========--}}
+<!-- JavaScript Libraries -->
+
+<script src="/lib/admin/lib/chart/chart.min.js"></script>
+<script src="/lib/admin/lib/easing/easing.min.js"></script>
+<script src="/lib/admin/lib/waypoints/waypoints.min.js"></script>
+<script src="/lib/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/moment.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Template Javascript -->
+<script src="/javascripts/admin/admin-panel/js/main.js"></script>
+{{!--=========== admin panel layout js End ===========--}}
+<!-- Libraries Stylesheet -->
+<link href="/lib/admin/lib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
+<link href="/lib/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="/stylesheets/admin/admin-panel-css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="/stylesheets/admin/admin-panel-css/style.css" rel="stylesheet">
+{{!--========== Admin panel layout css End ====================--}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+
+
+<!-- Table Start -->
+<div class="container-fluid pt-4 px-4" style="margin-top:4em;">
+
+    <div class="row g-4 mt-3">
+
+        <div class="col-12">
+
+            <div class="bg-light rounded h-100 ">
+
+                {{!-- <h6 class="mb-4">All Cars</h6> --}}
+
+                <div id="wrapper" class="pt-5">
+
+                    <!-- Content Wrapper -->
+                    <div id="content-wrapper" class="d-flex flex-column pt-3">
+                        <div class="container-fluid">
+                            <!-- DataTales Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Booking History</h6>
+                                </div>
+                                <div class="card-body pb-5">
+                                    <div class="table-responsive ">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                            <thead>
+
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Room Name</th>
+                                                    <th>Room Type</th>
+                                                    <th>Date</th>
+                                                    <th>Rooms</th>
+                                                    <th>Days</th>
+                                                    <th>Price</th>
+                                                   
+
+                                                 
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class="p-5">
+                                                 {{#each userBookings}}
+                                                <tr>
+                                                   
+                                                    <td>1</td>
+                                                   
+                                                        <td> <img alt="..."
+                                    src="/images/rooms-img/{{this.room.all_images.[0].main_img}}"
+                                    class="avatar avatar-sm rounded-circle me-2"> <a class="text-heading font-semibold"
+                                    href="#"> {{this.room.room_name}} </a> 
+                                    </td> 
+
+
+
+                                                    <td>{{this.room.room_type}}</td>
+                                                    <td>{{this.timeAndDate}}</td>
+                                                    <td>{{this.number_of_Rooms}}</td>
+                                                    <td>{{this.total_Days}}</td>
+                                                    <td><b> <span>&#8377; </span> {{this.total_Price}}</b></td>
+
+                                                  
+
+                                                </tr>
+                                                 {{/each}}
+                                               
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Table End -->
+{{!--=========== admin panel layout js Start ===========--}}
+<!-- JavaScript Libraries -->
+
+<script src="/lib/admin/lib/chart/chart.min.js"></script>
+<script src="/lib/admin/lib/easing/easing.min.js"></script>
+<script src="/lib/admin/lib/waypoints/waypoints.min.js"></script>
+<script src="/lib/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/moment.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="/lib/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Template Javascript -->
+<script src="/javascripts/admin/admin-panel/js/main.js"></script>
+{{!--=========== admin panel layout js End ===========--}}
+<!-- Libraries Stylesheet -->
+<link href="/lib/admin/lib/owlcarousel/owl.carousel.min.js" rel="stylesheet">
+<link href="/lib/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="/stylesheets/admin/admin-panel-css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="/stylesheets/admin/admin-panel-css/style.css" rel="stylesheet">
+{{!--========== Admin panel layout css End ====================--}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+

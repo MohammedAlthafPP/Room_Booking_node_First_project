@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="/stylesheets/user-profile.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script> --}}
+<link rel="stylesheet" href="">
+
+
+<section>
+
+    <div class="container-xl px-4 mt-4">
+        <!-- Account page navigation-->
+        <nav class="nav nav-borders">
+
+            <a class="nav-link active ms-0" href="/user-profile?id={{userDet._id}}">Profile</a>
+            <a class="nav-link" href="/users/user-pro-billing?id={{userDet._id}}">Billing</a>
+            <a class="nav-link " href="/users/user-change-password">Change Password</a>
+            <a class="nav-link" href="/users/view-booking?id={{userDet._id}}">Bookings</a>
+          
+        </nav>
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        {{!-- http://bootdey.com/img/Content/avatar/avatar1.png --}}
+                        <img class="img-account-profile rounded-circle mb-2"
+                            src="/images/User-profile/{{userDet.user_img}}" alt="" id="img_views">
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no less than 3 MB</div>
+                        <!-- Profile picture upload button-->
+                        {{!-- <button class="btn btn-primary" type="file">Upload new image</button> --}}
+
+                        <form action="/users/Edit_user_profile?id={{userDet._id}}" method="post" enctype="multipart/form-data">
+
+                            {{!-- ======================================= upload img button =============== --}}
+                            <div class="upload_button_img">
+                                <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                                <link rel="stylesheet" href="/stylesheets/uploadbutton.css">
+                                <script src="/javascripts/uploadbutton.js"></script>
+                                <main class="main_full">
+                                    <div class="container hs">
+                                        <div class="panel pn">
+                                            <div class="button_outer">
+                                                <div class="btn_upload bu ">
+                                                    <input type="file" id="upload_file" name="user_img"  onchange="viewImage(event)" >
+                                                    Upload Image
+                                                </div>
+                                                <div class="processing_bar"></div>
+                                                <div class="success_box"></div>
+                                            </div>
+                                        </div>
+                                        <div class="error_msg"></div>
+                                        <div class="uploaded_file_view" id="uploaded_view">
+                                            <span class="file_remove">X</span>
+                                        </div>
+                                    </div>
+                                </main>
+                            </div>
+                            {{!-- ============================================================================= --}}
+
+                        
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+
+                        <!-- Form Group (username)-->
+                        <div class="mb-3">
+                          
+                            <label class="small mb-1" for="inputUsername">User name</label>
+                           
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username"
+                                value="{{userDet.email}}" readonly>
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First Name</label>
+                                <input class="form-control" id="inputFirstName" type="text"
+                                    placeholder="Enter your first name" value="{{userDet.name}}" name="name" required>
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last Name</label>
+                                <input class="form-control" id="inputLastName" type="text"
+                                    placeholder="Enter your last name" value="{{userDet.lastname}}" name="lastname">
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Address</label>
+                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your Address"
+                                    value="{{userDet.address}}" name="address">
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Location</label>
+                                <input class="form-control" id="inputLocation" type="text"
+                                    placeholder="Enter your location" value="{{userDet.location}}"
+                                    name="location">
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control" id="inputEmailAddress" type="email"
+                                placeholder="Enter your email address" value="{{userDet.email}}" name="email" required>
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" type="number"
+                                    placeholder="Enter your phone number" value="{{userDet.phone}}"
+                                    name="phone" maxlength="10"  required>
+                            </div>
+                            <!-- Form Group (birthday)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday"
+                                    placeholder="Enter your birthday" value="{{userDet.birthday}}" >
+                            </div>
+                        </div>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                        {{!-- <a href="" class="btn btn-primary" type="submit">submit</a> --}}
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<script>
+
+    function viewImage(event) {
+    document.getElementById('img_views').src = URL.createObjectURL(event.target.files[0])
+  }
+</script>

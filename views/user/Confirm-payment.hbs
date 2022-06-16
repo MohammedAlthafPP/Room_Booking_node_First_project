@@ -1,0 +1,164 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet" href="/stylesheets/confirm-payment.css">
+
+
+
+<div class="wrapper">
+    <div class="card px-4">
+        <div class=" my-3">
+            <p class="h8">Payment Method </p>
+            <p class="text-muted ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+<form action="" id="checkout-for">
+        <div class="debit-card mb-3">
+            <div class="d-flex flex-column h-100">
+                <label class="d-block">
+                    <div class="d-flex position-relative">
+                        <div>
+                            <img src="https://www.freepnglogos.com/uploads/visa-inc-logo-png-11.png" class="visa"
+                                alt="" >
+                            <p class="mt-2 mb-4 text-white fw-bold">Debit/Credit card or UPI</p>
+                        </div>
+                        <div class="input">
+                            <input type="radio" name="payment_method" id="check" value="online" checked>
+                        </div>
+                    </div>
+                </label>
+                <div class="mt-auto fw-bold d-flex align-items-center justify-content-between" style="visibility:hidden;">
+                    <p>4989 1237 1234 4532</p>
+                    <p>01/24</p>
+                </div>
+            </div>
+        </div>
+        <div class="debit-card card-2 mb-4">
+            <div class="d-flex flex-column h-100">
+                <label class="d-block">
+                    <div class="d-flex position-relative">
+                        <div>
+                            <img src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-png-transparent-svg-vector-bie-supply-0.png"
+                                alt="master" class="master">
+                            <p class="text-white fw-bold">Pay at Hotel</p>
+                        </div>
+                        <div class="input">
+                            <input type="radio" name="payment_method" id="check" value="pay_at_hotel">
+                        </div>
+                    </div>
+                </label>
+                <div class="mt-auto fw-bold d-flex align-items-center justify-content-between" style="visibility:hidden;">
+                    <p class="m-0">5540 2345 3453 2343</p>
+                    <p class="m-0">05/23</p>
+                </div>
+            </div>
+        </div>
+        
+        <div >
+          <button class="btn mb-4" type="submit">  Book Now</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    $("#checkout-for").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/place-order',
+            method: 'post',
+            data: $('#checkout-for').serialize(),
+            success: (response) => {
+                alert("Sucessfully Completed")
+                if (response.pahSuccess) {
+                    location.href = '/users/order-Success'
+                } else {
+                    razorpayPay(response)
+                }
+
+            }
+        })
+
+    })
+
+
+
+    function razorpayPay(order) {
+        console.log(order, "order")
+        var options = {
+            "key": "rzp_test_ucfp9mDCox69xP", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "BluePearl Hotels",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature);
+
+                verifyPayment(response, order)
+
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+
+
+    }
+
+
+    function verifyPayment(payment, order) {
+        console.log(payment, "AAAAAAAAAAAAAAAa")
+        console.log(order, "BBBBBBBBBBB")
+        $.ajax({
+            url: '/verify-payment',
+            data: {
+                payment,
+                order
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.status) {
+                    console.log('abcd')
+                    location.href = '/users/order-Success'
+                } else {
+                    alert("payment failed")
+                }
+            }
+        })
+    }
+
+
+</script>

@@ -1,0 +1,420 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/single-room.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+  {{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script> --}}
+     {{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script> --}}
+ 
+
+
+
+</head>
+
+<body>
+
+
+
+<section class="bg-white">
+
+
+  <div class="mt-2 mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-5 pr-2">
+        <div class="card">
+          <div class="demo">
+            <ul id="lightSlider">
+              <li data-thumb="https://i.imgur.com/KZpuufK.jpg">
+                <img src="/images/rooms-img/{{rooms.all_images.[0].main_img}}" />
+              </li>
+              <li data-thumb="https://i.imgur.com/GwiUmQA.jpg">
+                <img src="/images/rooms-img/{{rooms.all_images.[0].aux_img_1}}" />
+              </li>
+              <li data-thumb="https://i.imgur.com/DhKkTrG.jpg">
+                <img src="/images/rooms-img/{{rooms.all_images.[0].aux_img_2}}" />
+              </li>
+              {{!-- <li data-thumb="https://i.imgur.com/kYWqL7k.jpg"> <img src="https://i.imgur.com/kYWqL7k.jpg" />
+              </li>
+              <li data-thumb="https://i.imgur.com/c9uUysL.jpg"> <img src="https://i.imgur.com/c9uUysL.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/KZpuufK.jpg"> <img src="https://i.imgur.com/KZpuufK.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/GwiUmQA.jpg"> <img src="https://i.imgur.com/GwiUmQA.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/DhKkTrG.jpg"> <img src="https://i.imgur.com/DhKkTrG.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/kYWqL7k.jpg"> <img src="https://i.imgur.com/kYWqL7k.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/c9uUysL.jpg"> <img src="https://i.imgur.com/c9uUysL.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/KZpuufK.jpg"> <img src="https://i.imgur.com/KZpuufK.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/GwiUmQA.jpg"> <img src="https://i.imgur.com/GwiUmQA.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/DhKkTrG.jpg"> <img src="https://i.imgur.com/DhKkTrG.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/kYWqL7k.jpg"> <img src="https://i.imgur.com/kYWqL7k.jpg" /> </li>
+              <li data-thumb="https://i.imgur.com/c9uUysL.jpg"> <img src="https://i.imgur.com/c9uUysL.jpg" /> </li>
+              --}}
+            </ul>
+          </div>
+        </div>
+        <div class="card mt-2">
+
+          <h6>Reviews</h6>
+          <div class="d-flex flex-row">
+            <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                class="fa fa-star"></i> </div> <span class="ml-1 font-weight-bold">4.6</span>
+          </div>
+          <hr>
+          <div class="badges"> <span class="badge bg-dark ">All (230)</span> <span class="badge bg-dark "> <i
+                class="fa fa-image"></i> 23 </span> <span class="badge bg-dark "> <i class="fa fa-comments-o"></i> 23
+            </span> <span class="badge bg-warning"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="ml-1">2,123</span> </span> </div>
+          <hr>
+          <div class="comment-section">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/o5uMfKo.jpg"
+                  class="rounded-circle profile-image">
+                <div class="d-flex flex-column ml-1 comment-profile">
+                  <div class="comment-ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                      class="fa fa-star"></i> <i class="fa fa-star"></i> </div> <span class="username">Lori
+                    Benneth</span>
+                </div>
+              </div>
+              <div class="date"> <span class="text-muted">2 May</span> </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/tmdHXOY.jpg"
+                  class="rounded-circle profile-image">
+                <div class="d-flex flex-column ml-1 comment-profile">
+                  <div class="comment-ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                      class="fa fa-star"></i> <i class="fa fa-star"></i> </div> <span class="username">Timona
+                    Simaung</span>
+                </div>
+              </div>
+              <div class="date"> <span class="text-muted">12 May</span> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card">
+          <div class="d-flex flex-row align-items-center">
+            <div class="p-ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div> <span class="ml-1">5.0</span>
+          </div>
+          <div class="about"> <span class="font-weight-bold">{{rooms.room_name}}</span>
+            <h4 class="font-weight-bold">&#8377;{{rooms.total}}</h4>
+          </div>
+          <div class="buttons">
+
+            {{!-- <div class="counter">
+              <div class="container py-2">
+
+                <div class="row ">
+                  <div class=" col-md-3  ">
+                    <div class="input-group">
+                      <span class="input-group-prepend ">
+                        <button type="button" class="btn btn-outline-secondary btn-number bg-danger" disabled="disabled"
+                          data-type="minus" data-field="quant[1]">
+                          <span class="fa fa-minus text-white"></span>
+                        </button>
+                      </span>
+                      <input type="text" name="quant[1]" class="form-control input-number " value="1" min="1" max="5"
+                        style="max-width: 30%; height: 46px;">
+                      <span class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary btn-number bg-success" data-type="plus"
+                          data-field="quant[1]">
+                          <span class="fa fa-plus text-white"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> --}}
+
+
+            {{!-- ========================================================= --}}
+
+
+
+
+
+
+
+            {{!-- <button class="btn btn-outline-warning btn-long cart ">Add to Cart</button> --}}
+            {{!-- <button class="btn btn-warning btn-long buy">Book Now</button> --}}
+            <a href="/users/checkout-page?id={{rooms._id}}" class="btn btn-warning btn-long buy">Book Now</a>
+
+            <button class="btn btn-light wishlist" onclick="addWishlist('{{this.rooms._id}}')"> <i
+                class="fa fa-heart"></i> </button>
+          </div>
+          <hr>
+          <div class="product-description">
+            {{!-- <div><span class="font-weight-bold">Color:</span><span> blue</span></div>
+            <div class="my-color"> <label class="radio"> <input type="radio" name="gender" value="MALE" checked> <span
+                  class="red"></span> </label> <label class="radio"> <input type="radio" name="gender" value="FEMALE">
+                <span class="blue"></span> </label> <label class="radio"> <input type="radio" name="gender"
+                  value="FEMALE"> <span class="green"></span> </label> <label class="radio"> <input type="radio"
+                  name="gender" value="FEMALE"> <span class="orange"></span> </label> </div>
+            <div class="d-flex flex-row align-items-center"> <i class="fa fa-calendar-check-o"></i> <span
+                class="ml-1">&#8377;{{this.security_deposit}}<span class="ms-1">The Amount can be
+                  refunded</span></span> </div> --}}
+            <div class="mt-2"> <span class="font-weight-bold">Description</span>
+              <p>{{rooms.description}}</p>
+
+              {{#if rooms.security_deposit}}
+              <p class="" style="font-size: 14px;">&#8377;{{rooms.security_deposit}}<span class="ms-1">The Amount can
+                  be refunded</span> </p>
+
+              {{/if}}
+
+
+              <div class="bullets">
+                {{#if rooms.freature.[0].free_wifi}}
+                <div class="d-flex align-items-center">
+                  <span class="dot"></span> <span class="bullet-text">{{rooms.freature.[0].free_wifi}}</span>
+                </div>
+                {{/if}}
+
+                {{#if rooms.freature.[0].free_parking}}
+                <div class="d-flex align-items-center">
+                  <span class="dot"></span> <span class="bullet-text">{{rooms.freature.[0].free_parking}}</span>
+                </div>
+                {{/if}}
+                {{#if rooms.freature.[0].breakfast}}
+                <div class="d-flex align-items-center">
+                  <span class="dot"></span> <span class="bullet-text">{{rooms.freature.[0].breakfast}}</span>
+                </div>
+                {{/if}}
+                {{#if rooms.freature.[0].Hour_24}}
+                <div class="d-flex align-items-center">
+                  <span class="dot"></span> <span class="bullet-text">{{rooms.freature.[0].Hour_24}}</span>
+                </div>
+                {{/if}}
+                {{#if rooms.freature.[0].bar}}
+                <div class="d-flex align-items-center">
+                  <span class="dot"></span> <span class="bullet-text">{{rooms.freature.[0].bar}}</span>
+                </div>
+                {{/if}}
+                {{#if rooms.freature.[0].business_facilities}}
+                <div class="d-flex align-items-center">
+                  <span class="dot"></span><span class="bullet-text">{{rooms.freature.[0].business_facilities}}</span>
+                </div>
+                {{/if}}
+              </div>
+            </div>
+            <div class="mt-2"> <span class="font-weight-bold">Hotel</span> </div>
+            <div class="d-flex flex-row align-items-center">
+              <a href="/view-Wishlist">
+                <img src="https://i.imgur.com/N2fYgvD.png" class="rounded-circle store-image"></a>
+              <div class="d-flex flex-column ml-1 comment-profile">
+                <div class="comment-ratings"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                    class="fa fa-star"></i> <i class="fa fa-star"></i> </div> <span class="username">Alakshya
+                  Hote</span> <small class="followers">25K Followers</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-2"> <span>Similar items:</span>
+          <div class="similar-products mt-2 d-flex flex-row">
+            <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img
+                src="https://i.imgur.com/KZpuufK.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h6 class="card-title">$1,999</h6>
+              </div>
+            </div>
+            <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img
+                src="https://i.imgur.com/GwiUmQA.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h6 class="card-title">$1,699</h6>
+              </div>
+            </div>
+            <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img
+                src="https://i.imgur.com/c9uUysL.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h6 class="card-title">$2,999</h6>
+              </div>
+            </div>
+            <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> <img
+                src="https://i.imgur.com/kYWqL7k.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h6 class="card-title">$3,999</h6>
+              </div>
+            </div>
+            <div class="card border p-1" style="width: 9rem;"> <img src="https://i.imgur.com/DhKkTrG.jpg"
+                class="card-img-top" alt="...">
+              <div class="card-body">
+                <h6 class="card-title">$999</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+  <script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
+  <script> $('#lightSlider').lightSlider({ gallery: true, item: 1, loop: true, slideMargin: 0, thumbItem: 9 });
+  </script>
+
+  {{!-- </div>
+  </div> --}}
+
+   {{!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script> --}}
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+  function addWishlist(id) {
+    console.log(id, "IIIIIID")
+    $.ajax({
+
+      url: '/wishList/' + id,
+      method: 'get',
+      success: (response) => {
+        console.log(response, "response")
+       
+        if(response.RoomUpdate){
+          alert("Added to Wishlist")
+        }else if(response.roomExist){
+          alert("Already Exist")
+         
+        }else{
+          
+          location.href="/user-login"
+
+        }
+        
+      }
+    
+
+    })
+  }
+
+
+
+</script>
+
+<script>
+
+  $(function(){
+   $('destination-search').bind('keyup keydown keypress', function (evt) {
+   
+       return false;
+   });
+});
+</script>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!--
+<script>
+
+
+  $('.btn-number').click(function (e) {
+    e.preventDefault();
+
+    fieldName = $(this).attr('data-field');
+    type = $(this).attr('data-type');
+    var input = $("input[name='" + fieldName + "']");
+    var currentVal = parseInt(input.val());
+    if (!isNaN(currentVal)) {
+      if (type == 'minus') {
+
+        if (currentVal > input.attr('min')) {
+          input.val(currentVal - 1).change();
+        }
+        if (parseInt(input.val()) == input.attr('min')) {
+          $(this).attr('disabled', true);
+        }
+
+      } else if (type == 'plus') {
+
+        if (currentVal < input.attr('max')) {
+          input.val(currentVal + 1).change();
+        }
+        if (parseInt(input.val()) == input.attr('max')) {
+          $(this).attr('disabled', true);
+        }
+
+      }
+    } else {
+      input.val(0);
+    }
+  });
+  $('.input-number').focusin(function () {
+    $(this).data('oldValue', $(this).val());
+  });
+  $('.input-number').change(function () {
+
+    minValue = parseInt($(this).attr('min'));
+    maxValue = parseInt($(this).attr('max'));
+    valueCurrent = parseInt($(this).val());
+
+    name = $(this).attr('name');
+    if (valueCurrent >= minValue) {
+      $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+    } else {
+      alert('Sorry, the minimum value was reached');
+      $(this).val($(this).data('oldValue'));
+    }
+    if (valueCurrent <= maxValue) {
+      $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+    } else {
+      alert('Sorry, the maximum value was reached');
+      $(this).val($(this).data('oldValue'));
+    }
+  });
+
+  $(".input-number").keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+      // Allow: Ctrl+A
+      (e.keyCode == 65 && e.ctrlKey === true) ||
+      // Allow: home, end, left, right
+      (e.keyCode >= 35 && e.keyCode <= 39)) {
+      // let it happen, don't do anything
+      return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+      e.preventDefault();
+    }
+  });
+
+
+
+
+
+
+</script> --}}

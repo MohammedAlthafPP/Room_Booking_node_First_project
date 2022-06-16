@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://kit.fontawesome.com/d296e17030.js" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+</head>
+
+<body>
+
+
+  <section class="herosection" style="">
+    <header class="pt-3 sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+        <div class="container">
+          <a class="navbar-brand text-white fw-bold" href="#">Guest-User</a>
+          <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active  me-3" aria-current="page" href=""><img src="/images/icons8-globe-24.png"
+                      alt="Glob"></a>
+                </li>
+                <li class="nav-item">
+                  {{#if user}}
+                  <a href="/user-logout" class="btn fw-bold fs-5 me-5 text-white">Logout</a>
+                  {{else}}
+                  <a href="/user-login" class="btn fw-bold fs-5 me-5 text-white">Log in</a>
+                  {{/if}}
+                </li>
+                <li class="nav-item">
+                  {{#if user}}
+
+                  <div class="dropdown">
+                    <a class="btn  btn-outline-success rounded-pill fw-bold text-white btn bg-transparent border-3 border-white "
+                      href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{uName}}
+                    </a>
+
+                    <ul
+                      class="dropdown-menu  btn-outline-success fw-bold text-white btn bg-transparent border-0 text-white"
+                      aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item text-white fw-bold" href="#">Action</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#">Another action</a></li>
+                      <li><a class="dropdown-item text-white fw-bold" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+
+                  {{else}}
+
+                  <a href="/user-signup"
+                    class="btn btn-outline-success rounded-pill fw-bold text-white btn bg-transparent border-3 border-white">Sign
+                    Up</a>
+                  {{/if}}
+
+                  {{!-- <a href="/user-signup"
+                    class="btn btn-outline-success rounded-pill fw-bold text-white btn bg-transparent border-3 border-white">Sign
+                    Up</a> --}}
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+
+    </header>
+
+    {{!-- ============================================== banner ==================================== --}}
+
+    <section class="tm-banner">
+      <div class="tm-container-outer tm-banner-bg bg-transparent ">
+        <div class="container">
+          <div class="row tm-banner-row tm-banner-row-header">
+            <div class="col-xs-12">
+              <div class="tm-banner-header">
+
+                <h1 class="text-uppercase tm-banner-title">Let's begin</h1>
+                <img src="/images/dots-3.png" alt="Dots">
+                <p class="tm-banner-subtitle">We assist you to choose the best.</p>
+                <a href="javascript:void(0)" class="tm-down-arrow-link"><i class="fa-solid fa-angle-down fs-3"></i></a>
+              </div>
+            </div> <!-- col-xs-12 -->
+          </div> <!-- row -->
+          <div class="row tm-banner-row" id="tm-section-search">
+
+            <form action="/users/landingSearch" method="post" class="tm-search-form tm-section-pad-2 col-6 ">
+              <div class="form-row tm-search-form-row ">
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                  <label for="inputCity">Choose Your Destination</label>
+                  <input name="destination" type="text" class="form-control" id="inputCity"
+                    placeholder="Type your destination..." >
+                </div>
+                <div class="form-group tm-form-group tm-form-group-1">
+                  <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
+                    <label for="inputRoom">How many rooms?</label>
+                    <select name="room" class="form-control tm-select" id="inputRoom" required>
+                      <option value="1" selected>1 Room</option>
+                      <option value="2">2 Rooms</option>
+                      <option value="3">3 Rooms</option>
+                      <option value="4">4 Rooms</option>
+                      <option value="5">5 Rooms</option>
+                      <option value="6">6 Rooms</option>
+                      <option value="7">7 Rooms</option>
+                      <option value="8">8 Rooms</option>
+                      <option value="9">9 Rooms</option>
+                      <option value="10">10 Rooms</option>
+                    </select>
+                  </div>
+                  <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                    <label for="inputAdult">Adult</label>
+                    <select name="adult" class="form-control tm-select" id="inputAdult" required>
+                      <option value="1" selected>1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                  </div>
+                  <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+
+                    <label for="inputChildren">Children</label>
+                    <select name="children" class="form-control tm-select" id="inputChildren" >
+                      <option value="0" selected>0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                    </select>
+                  </div>
+                </div>
+              </div> <!-- form-row -->
+
+              <div class="form-row tm-search-form-row">
+
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                  <label for="inputCheckIn">Check In Date</label>
+                  <input name="checkin" type="datetime-local" class="form-control" id="inputCheckIn"
+                    placeholder="Check In" onchange="calculateHours()" required>
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                  <label for="inputCheckOut">Check Out Date</label>
+                  <input name="checkout" type="datetime-local" class="form-control" id="inputCheckOut"
+                    placeholder="Check Out" onchange="calculateHour()" required>
+                  {{!-- <p id="hours"></p> --}}
+                  <input type="text" id="hours" name="total_hours" value="" hidden>
+                  <input type="text" id="days" name="days" value="" hidden>
+                </div>
+                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                  <label for="btnSubmit">&nbsp;</label>
+                  <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">Check
+                    Availability</button>
+
+                </div>
+              </div>
+            </form>
+
+          </div> <!-- row -->
+          <div class="tm-banner-overlay"></div>
+        </div> <!-- .container -->
+      </div> <!-- .tm-container-outer -->
+    </section>
+
+  </section>
+
+
+
+
+  <script>
+    $(function () {
+      $('#inputCity').autocomplete({
+        source: function (req, res) {
+
+          $.ajax({
+            url: "http://localhost:3000/users/autocomplete/",
+            dataType: "jsonp",
+            type: "GET",
+            data: req,
+            success: function (data) {
+             // console.log(data)
+              res(data)
+            },
+            error: function (err) {
+              console.log(err, "Error in Autocomplete")
+            }
+          })
+        },
+
+
+
+        minLength: 1,
+        select: function (event, ui) {
+          if (ui.item) {
+            $('#inputCity').text(ui.item.label)
+          }
+        }
+      })
+
+
+
+    })
+
+
+  </script>
+
+
+
+
+
+
+
+<script>
+  function calculateHour() {
+    var checkin = document.getElementById('inputCheckIn').value;
+    var checkout = document.getElementById('inputCheckOut').value;
+    const dateIn = new Date(checkin);
+    const dateout = new Date(checkout);
+    const time = Math.abs(dateout - dateIn);
+    const totalhours = Math.ceil(time / (1000 * 60 * 60));
+    const days = Math.ceil(totalhours / 24)
+    document.getElementById('hours').value = totalhours;
+    document.getElementById('days').value = days;
+    console.log(totalhours)
+  }
+
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+{{!--
+<div>
+  <h1>test</h1>
+  <label for="customRange3" class="form-label">price</label>
+  <input type="range" class="form-range" min="300" max="1500" step="200" id="customRange3">
+</div> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- ============================= Autocomplete ================================= --}}
