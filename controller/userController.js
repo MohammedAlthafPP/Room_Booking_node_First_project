@@ -883,7 +883,7 @@ const deleteWishListItem=async(req,res)=>{
 const getConfirmPayment=async(req,res)=>{
 
 
-    res.render('user/confirm-payment',{layout:false})
+    res.render('user/Confirm-payment',{layout:false})
 }
 //  const getRoomDetails= (user_id)=>{
 //      return new Promise (async (resolve,reject)=>{
