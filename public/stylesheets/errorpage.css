@@ -4,6 +4,9 @@
     
         background-image: url('/images/SVG-Animation-404-Page.gif');
         background-size: cover;
+       
+        background-repeat: no-repeat;
+        background-position: center center;
         
         
         

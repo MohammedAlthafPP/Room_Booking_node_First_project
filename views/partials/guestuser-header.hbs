@@ -1,3 +1,6 @@
+
+
+
 <style>
   .ui-menu {
     top: 60px !important;
@@ -17,9 +20,9 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top ">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top " id="usernavbar">
   <div class="container bg-transparent">
-    <a class="navbar-brand" href="/users/homepage">User</a>
+    <a class="navbar-brand" href="/users/homepage"> <img src="/images/bluepearl.logo.png" alt="" style="width:90px; height:74px;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,13 +39,13 @@
             {{#if isReadOnly}}
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
-                aria-label="Search" value="{{date.place}}" id="destination-search" name="destination" required readonly
+                aria-label="Search" value="{{date.destination}}" id="destination-search" name="destination" required readonly
                 style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
-                aria-label="Search" value="{{date.place}}" id="destination-search" name="destination">
+                aria-label="Search" value="{{date.destination}}" id="destination-search" name="destination">
             </div>
             {{/if}}
           </li>
@@ -50,13 +53,13 @@
             {{#if isReadOnly}}
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
-                aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onchange="calculateHourss()"
+                aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onsubmit="calculateHourss()"
                 required readonly style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
-                aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onchange="calculateHourss()"
+                aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onsubmit="calculateHourss()"
                 required>
             </div>
             {{/if}}
@@ -66,13 +69,13 @@
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
                 aria-label="Search" value="{{date.checkout}}" name="checkout" id="CheckOut12"
-                onchange="calculateHourss()" required readonly style="background-color:white;">
+                onsubmit="calculateHourss()" required readonly style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
                 aria-label="Search" value="{{date.checkout}}" name="checkout" id="CheckOut12"
-                onchange="calculateHourss()" required>
+                onsubmit="calculateHourss()" required>
             </div>
             {{/if}}
           </li>
@@ -93,7 +96,7 @@
             <div class="form-group">
 
               <select name="adult" class=" form-control me-2 rounded-pill mb-2 bg-white " id="inputAdult"
-                style="width: 45px; " required>
+                style="width: 50px; " required>
 
                 <option value="{{date.adult}}" selected>{{date.adult}}</option>
                 <option value="1">1</option>
@@ -109,6 +112,7 @@
 
 
               </select>
+            
             </div>
             {{/if}}
 
@@ -133,6 +137,7 @@
           <li>
             <input type="text" value="" id="hour" name="hours" hidden>
             <input type="" value="" id="day" name="days" hidden>
+              <input type="number" name="room" value="1" hidden>
           </li>
 
 
@@ -155,7 +160,7 @@
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
                 aria-label="Search" value="{{usreRequirements.destination}}" id="destination-search" name="destination"
-                required>
+                >
               {{/if}}
           </li>
           <li class="nav-item">
@@ -192,15 +197,15 @@
           <li class="nav-item ">
             {{#if isReadOnly}}
             <div class="form-group">
-              <button type="button" class="btn border btn-square-md rounded-pill me-2 bg-white"
-                data-mdb-ripple-color="dark" style="background-color:white;">{{usreRequirements.adult}}</button>
+              <button type="button" class="btn border btn-square-md rounded-pill me-2 bg-white "
+                data-mdb-ripple-color="dark" style="background-color:white; width:75px;"><i class="fa-solid fa-users"></i> <span>{{usreRequirements.adult}}</span></button>
             </div>
             {{else}}
 
             <div class="form-group">
 
               <select name="adult" class=" form-control me-2 rounded-pill mb-2 bg-white " id="inputAdult"
-                style="width: 45px; " required>
+                style="width: 45px; " data-bs-toggle="tooltip" data-bs-placement="top" title="Guests Count" required>
                 {{#if usreRequirements.adult}}
                 <option value="{{usreRequirements.adult}}" selected>{{usreRequirements.adult}}</option>
 
@@ -247,6 +252,7 @@
           <li>
             <input type="text" value="" id="hour" name="hours" hidden>
             <input type="text" value="" id="day" name="days" hidden>
+             <input type="number" name="room" value="1" hidden>
           </li>
 
         </ul>
@@ -262,7 +268,7 @@
       </form> --}}
 
       <form class="d-flex ">
-        <a href="/users/logout" class="btn fw-bold fs-5 me-5 text-black">Logout</a>
+        <a href="/user-login" class="btn fw-bold fs-5 me-5 text-black">Login</a>
 
 
         {{#if user}}
@@ -270,9 +276,9 @@
 
         <div class="dropdown">
           <button
-            class="dropdown-toggl btn btn-outline-dark rounded-pill fw-bold text-black btn bg-transparent border-3 border-black"
+            class="dropdown-toggl btn btn-outline-dark rounded-pill fw-bold text-black btn bg-transparent border-3 border-black  "
             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            {{user.name}}
+         <span class="text-truncate"> {{user.name}}</span> 
 
           </button>
 
@@ -317,7 +323,14 @@
 
 
 
+{{!-- 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> --}}
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
+

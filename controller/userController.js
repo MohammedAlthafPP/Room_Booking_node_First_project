@@ -107,10 +107,12 @@ const insertUser=async(req,res)=>{
     try {
         let Email=req.body.email
         const userData= await userModal.findOne({email:Email});
-console.log(userData,"=========",userData.email,"===================== USER DATA");
 
-        if(userData.email){
-                req.flash('SignupUsreExistMsg','The account already exists')
+        if(userData){
+
+
+
+        req.flash('SignupUsreExistMsg','The account already exists')
             res.redirect('/user-signup')
         }else{
 
@@ -118,7 +120,7 @@ console.log(userData,"=========",userData.email,"===================== USER DATA
 
         const spassword = await securePassword(req.body.password);
 
-      const user= ({
+            const user= ({
             name:req.body.name,
             email:req.body.email,
             password:spassword,
@@ -141,12 +143,13 @@ console.log(userData,"=========",userData.email,"===================== USER DATA
         }
     }
 
-    } catch (error) {
+}catch (error) {
         
         console.log(error.message);
     }
 
 }
+
 
 // Password Hashing using Bcrypt
 const securePassword = async(password)=>{

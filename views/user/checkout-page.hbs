@@ -210,7 +210,7 @@
 
 
 
-              <form action="" method="post" id="check-room-add">
+              <form action="" method="post" id="check-room-add" >
                 <div class="p-2 d-flex">
                   <div class="col-8">
                     Adult<span></span>
@@ -259,7 +259,7 @@
               </form>
               <div class="border-top px-2 mx-2"></div>
               <div class="p-2 d-flex">
-                <form action="" id="coupon-form" method="post" class="d-flex">
+                <form action="" id="coupon-form" method="post" class="d-flex" >
                   <div class="col-8 d-flex">
 
                     <input type="text" name="couponCode" class="border-0 border-bottom-1"
@@ -464,7 +464,7 @@
       method: 'post',
       data: $('#checkout-for').serialize(),
       success: (response) => {
-        alert("Sucessfully Completed")
+       // alert("Sucessfully Completed")
         if (response.pahSuccess) {
           location.href = '/users/order-Success'
         } else {
@@ -489,9 +489,9 @@
       "image": "https://example.com/your_logo",
       "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+       // alert(response.razorpay_payment_id);
+       // alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature);
 
         verifyPayment(response, order)
 
@@ -590,6 +590,84 @@
 </script>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- ========================================= Checkout Room Cout increase Validation
+================================================= --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+<script>
+
+
+  $(document).ready(function () {
+    $("#check-room-add").validate({
+      errorClass: "err",
+      rules: {
+        adult: {
+          required: true,
+         
+          maxlength: 2,
+           Adultvalidation: true
+        },
+        room: {
+          required: true,
+         
+          maxlength: 2,
+         dayvalidation: true
+        },
+      },
+      messages: {
+
+       adult: {
+          required: "Please enter Ault count",
+         
+          maxlength: "Number should be less than or equal to 2 digit numbers"
+        },
+       room: {
+          required: "Please enter Room count",
+         
+          maxlength: "Number should be less than or equal to 2 digit numbers"
+        },
+
+
+      }
+    })
+    $.validator.addMethod("Adultvalidation", function (value, element) {
+      return /^(?!0(\.0*)?$)\d+(\.?\d{0,2})?$/.test(value);
+    },
+      "Sorry,Adult count Should be morethan Zero"
+    );
+    $.validator.addMethod("dayvalidation", function (value, element) {
+      return /^(?!0(\.0*)?$)\d+(\.?\d{0,2})?$/.test(value);
+    },
+      "Sorry, Room count should be morethan Zero"
+    );
+
+
+  })
+
+</script>
 
 
 

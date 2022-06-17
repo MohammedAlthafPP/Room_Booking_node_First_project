@@ -57,7 +57,10 @@ const upload = multer({
 });
 
 /* GET All products. */
-router.get("/", async function (req, res, next) {
+router.get("/", verifyAdmin,async function (req, res, next) {
+
+
+  
   const viewBookingTotalCount = await Booking_Model.find({}).count();
   const RoomsTotalCount = await Rooms_module.find({}).count();
   const UsersTotalCount = await User.find({}).count();
@@ -68,34 +71,16 @@ router.get("/", async function (req, res, next) {
 
   const TotalEarned = profit[0].Total;
 
-  // const TotalConfirmedCount= await Booking_Model.find({}).count({Status: 'Booked'})
-  // const TotalPendingCount= await Booking_Model.find({}).count({Status: "Pending"})
-  // const TotalCancelledCount= await Booking_Model.find({}).count({Status: "Cancelled"})
+  const TotalConfirmedCount= await Booking_Model.find({}).count({Status: 'Booked'})
+  const TotalPendingCount= await Booking_Model.find({}).count({Status: "Pending"})
+  const TotalCancelledCount= await Booking_Model.find({}).count({Status: "Cancelled"})
 
   const BookingDetailsComp = await Booking_Model.find({})
     .populate("User_id")
     .sort({ timeAndDate: -1 })
     .limit(10)
     .lean();
-  console.log(
-    BookingDetailsComp,
-    "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
-  );
-  console.log(
-    BookingDetailsComp[0].User_id,
-    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-  );
-  console.log(
-    BookingDetailsComp[0].User_id[0].name,
-    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-  );
-
-  console.log(
-    viewBookingTotalCount,
-    RoomsTotalCount,
-    UsersTotalCount,
-    TotalEarned
-  );
+  
 
 
   BookingDetailsComp.forEach(element=>{
@@ -111,24 +96,31 @@ router.get("/", async function (req, res, next) {
 
 
 
-
-
-  res.render("admin/dashboard", {
-    admin: true,
-    BookingDetailsComp,
-    viewBookingTotalCount,
-    RoomsTotalCount,
-    UsersTotalCount,
-    TotalEarned,
+  
+    res.render("admin/dashboard", {
+      admin: true,
+      BookingDetailsComp,
+      viewBookingTotalCount,
+      RoomsTotalCount,
+      UsersTotalCount,
+      TotalEarned,
+    });
   });
-});
 
-router.get("/view-rooms", async function (req, res, next) {
+  
+//     res.render("admin/dashboard", {
+//       admin: true,
+     
+//     });
+//  });
+
+
+router.get("/view-rooms",verifyAdmin, async function (req, res, next) {
   try {
     let TotalRooms = await Rooms_module.aggregate([
       { $group: { _id: null, Total: { $sum: "$available_roomS" } } },
     ]);
-    TotalRooms = TotalRooms[0].Total;
+   TotalRooms = TotalRooms[0].Total;
     let TotalCheckinRooms = await Booking_Model.aggregate([
       { $match: { stayingStatus: "Check-in" } },
       { $group: { _id: null, Total: { $sum: "$number_of_Rooms" } } },
@@ -142,18 +134,18 @@ router.get("/view-rooms", async function (req, res, next) {
       { $group: { _id: null, Total: { $sum: "$number_of_Rooms" } } },
     ]);
     let BookedRooms = TotalBookedRooms[0].Total;
-    TotalBookedRooms = BookedRooms - TotalCheckinRooms;
+    TotalBookedRooms = BookedRooms 
     let AvailableRooms = TotalRooms - BookedRooms;
-    console.log(
-      TotalRooms,
-      TotalCheckinRooms,
-      TotalBookedRooms,
-      BookedRooms,
-      AvailableRooms,
-      "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
-    );
+    
 
     let rooms = await Rooms_module.find({}).lean();
+    // res.render("admin/view-rooms", {
+    //   roomsData: rooms,
+    //   admin: true,
+     
+    //   isViewRooms: true,
+    // });
+
     res.render("admin/view-rooms", {
       roomsData: rooms,
       admin: true,
@@ -163,6 +155,12 @@ router.get("/view-rooms", async function (req, res, next) {
       AvailableRooms,
       isViewRooms: true,
     });
+
+
+
+
+
+
   } catch (err) {
     console.log(err, "====View-Booking Catch Err");
   }
@@ -327,7 +325,7 @@ router.post(
 );
 
 //=============================== GETTING ALL USERS ==================================
-router.get("/view-users", async function (req, res, next) {
+router.get("/view-users",verifyAdmin, async function (req, res, next) {
   try {
     let users = await User.find({}).lean();
     const TotalUsersCount = await User.find({}).count();
@@ -348,7 +346,7 @@ router.get("/view-users", async function (req, res, next) {
 });
 
 // ================================== Add Rooms page rendering =====================
-router.get("/add-rooms", function (req, res, next) {
+router.get("/add-rooms",verifyAdmin, function (req, res, next) {
   res.render("admin/add-rooms", {
     admin: true,
     message: req.session.roomAdded,
@@ -492,7 +490,7 @@ router.post(
 );
 
 // ============================== Add admin =========================
-router.get("/add-admin", verifyAdmin, function (req, res, next) {
+router.get("/add-admin", verifyAdmin,function (req, res, next) {
   res.render("admin/add-admin", { layout: null });
 });
 
@@ -601,7 +599,7 @@ router.get("/active-user/:id", async (req, res) => {
 });
 
 // ====================== VIEW BOOKING =========================
-router.get("/view-booking", async (req, res) => {
+router.get("/view-booking",verifyAdmin, async (req, res) => {
   const viewBooking = await Booking_Model.find({})
     .sort({ timeAndDate: -1 })
     .lean();
@@ -659,7 +657,7 @@ router.post("/newcoupon", async (req, res) => {
 });
 
 //========================== View COUPONS ================
-router.get("/View-coupons", async (req, res) => {
+router.get("/View-coupons",verifyAdmin, async (req, res) => {
   const copounsDetails = await Coupon_Model.find({}).lean();
       
   console.log(copounsDetails, "ccccccccccccccccccccccccccccccccccccccccccc");
@@ -670,7 +668,7 @@ router.get("/View-coupons", async (req, res) => {
 });
 
 //====================== Edit COUPONS ====================
-router.get("/edit-coupon", async (req, res) => {
+router.get("/edit-coupon",verifyAdmin, async (req, res) => {
   console.log(
     req.query.id,
     "IIIIIIIIIIIIIIIIIIIIIIIIIBBBBBBBBBBBMMMMMMMMMMMMM"
@@ -698,7 +696,7 @@ router.post("/editcoupon", (req, res) => {
 // })
 
 //============================= single-booking =================
-router.get("/single-booking", async (req, res) => {
+router.get("/single-booking", verifyAdmin,async (req, res) => {
   console.log(req.query.id, "iiiiiiiiiiiiifsfdvhagbzsnjxm  =====id");
   const id = req.query.id;
   const viewBookingDetails = await Booking_Model.find({ _id: id }).lean();
@@ -753,7 +751,7 @@ router.post("/stayingStatuschanging", async (req, res) => {
 });
 
 //========================= Occupied Rooms =============
-router.get("/occupiedRooms", async (req, res) => {
+router.get("/occupiedRooms",verifyAdmin, async (req, res) => {
   let OccupiedRooms = await Booking_Model.aggregate([
     { $match: { stayingStatus: "Check-in" } },
   ]);
@@ -791,7 +789,7 @@ router.get("/occupiedRooms", async (req, res) => {
 
 //======================== BOOKED ROOMS ==============
 
-router.get("/bookedRooms",async (req, res) => {
+router.get("/bookedRooms",verifyAdmin,async (req, res) => {
 
   let OccupiedRooms = await Booking_Model.aggregate([
     { $match: { Status: "Booked" } },
@@ -835,7 +833,7 @@ router.get("/bookedRooms",async (req, res) => {
 });
 
 //=================== /room-view =================
-router.get("/room-view/:id", async (req, res) => {
+router.get("/room-view/:id",verifyAdmin, async (req, res) => {
   const id = req.params.id;
   const singleRoom = await Rooms_module.findOne({ _id: id }).lean();
 
@@ -848,7 +846,7 @@ router.get("/room-view/:id", async (req, res) => {
 });
 
 //============================ SINGLE_USER =======================
-router.get("/user-view/:id", async (req, res) => {
+router.get("/user-view/:id",verifyAdmin, async (req, res) => {
   const id = req.params.id;
   const Singleuser = await User.findById(id).lean();
   const userBookings = await Booking_Model.find({ User_id: id }).lean();
@@ -872,6 +870,6 @@ router.get("/user-view/:id", async (req, res) => {
 //admin log out
 router.get("/logout", (req, res) => {
   req.session.destroy();
-  res.redirect("/admin-login");
+  res.redirect("/admin/admin-login");
 });
 module.exports = router;

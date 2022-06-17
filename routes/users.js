@@ -634,8 +634,13 @@ router.post("/datesubmit", async (req, res) => {
     const Place = req.session.searchDetails.destination;
     // const Place=req.session.searchResult.place
     const rooms = await Room.find({ place: Place }).lean();
+    
+
     res.render("user/homepage", { rooms, user, date });
-  } else {
+
+
+    
+  } else  {
     const rooms = await Room.find({}).lean();
 
     res.render("user/homepage", { rooms, user, date });

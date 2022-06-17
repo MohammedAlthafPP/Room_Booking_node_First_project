@@ -29,3 +29,18 @@ a{
 .fa {
         color:gold;
 }
+
+.hompageNoRecord{
+
+    background-image: url('/images/homepage_NO_records.gif');
+    background-size: cover;
+   
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    padding:0;
+    margin:0;
+
+
+
+}
