@@ -352,7 +352,7 @@ const sendResetPasswordMail = async(name,email,validRandomString)=>{ //function 
             to:email, 
             subject:"Reset Password ",
             text:"Bluepearl Hotels and Hospitality Management ",  //sending reset password page with token as email
-            html:'<p> Hi ' + name + ' click <a href ="http://localhost:3000/reset-password?token=' + validRandomString + '"> here to </a> to reset your password</p>'
+            html:'<p> Hi ' + name + ' click <a href ="https://bluepearl.ml/reset-password?token=' + validRandomString + '"> here to </a> to reset your password</p>'
         }
         mailTransporter.sendMail(mailDetails,(err,Info)=>{ //sendMail is pre-defined function -send Email
             if(err){
