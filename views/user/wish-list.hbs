@@ -27,8 +27,8 @@
                         <div class="card-body p-4">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
-                                    <img src="/images/rooms-img/{{this.room.all_images.[0].main_img}}"
-                                        class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                 <a href="/users/single-room-page?id={{this._id}}">   <img src="/images/rooms-img/{{this.room.all_images.[0].main_img}}"
+                                        class="img-fluid rounded-3" alt="Cotton T-shirt"></a>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                     <p class="lead fw-normal mb-2">{{this.room.room_name}}</p>
@@ -110,7 +110,7 @@
 
 
 
-
+{{!-- 
 
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-4">
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{!-- <div class="card mb-4">
                         <div class="card-body p-4 d-flex flex-row">

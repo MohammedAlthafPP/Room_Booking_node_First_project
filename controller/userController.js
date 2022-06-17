@@ -826,7 +826,7 @@ const viewWishlist=async(req,res)=>{
     .lean();
 
 
-console.log(Wishlist.Room_id,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+
 
 
 if(req.session.searchDetails){
