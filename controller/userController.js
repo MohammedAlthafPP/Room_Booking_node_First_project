@@ -53,7 +53,9 @@ try {
         to:email, 
         subject:"Email Confirmation from Bluepearl Hotels and Hospitality Management",
         text:"just random texts ",
-        html:'<p>hi '+name+'your otp '+otp+''
+        html:'<p>hi '+name+' your otp '+otp+''
+        
+        
     }
     mailTransporter.sendMail(mailDetails,(err,Info)=>{
         if(err){
