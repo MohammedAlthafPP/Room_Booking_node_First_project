@@ -277,7 +277,7 @@
 
 
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
@@ -288,16 +288,17 @@
       url: '/wishList/' + id,
       method: 'get',
       success: (response) => {
-        console.log(response, "response")
+        console.log(response, "===============response Whishlist")
        
         if(response.RoomUpdate){
-          alert("Added to Wishlist")
+          
+          swal("Good job!", "Added to Wishlist!", "success");
         }else if(response.roomExist){
-          alert("Already Exist")
+         swal("hello !", "This one Already Added to you Wishlist!");
          
         }else{
-          
-          location.href="/user-login"
+          swal("Please Login!", "you have to login to access the Wishlist !", "info");
+         // location.href="/user-login"
 
         }
         

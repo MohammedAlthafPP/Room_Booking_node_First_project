@@ -202,6 +202,7 @@ router.get("/checkout-page",verifyUser, async (req, res) => {
           MobileOTPErr: req.session.MobileOTPErr,
           usreRequirements,
           isReadOnly: true,
+         
         });
         req.session.MobileOTPErr = false;
       }
@@ -251,7 +252,7 @@ router.get("/checkout-page",verifyUser, async (req, res) => {
         MobileOTPErr: req.session.MobileOTPErr,
         date,
         isReadOnly: true,
-        massege: req.flash("msg"),
+       
       });
       req.session.MobileOTPErr = false;
     } else {
@@ -673,7 +674,8 @@ router.post("/applyCoupon", async (req, res) => {
 
         if (isCouponUsed) {
           console.log("you are already used the coupon...");
-          req.flash("msg", "you are already used the coupon...");
+          req.flash("msgg", "you are already used the coupon...");
+          res.json({Exist:true})
         } else {
           if (
             new Date().getTime() >=
@@ -681,6 +683,7 @@ router.post("/applyCoupon", async (req, res) => {
           ) {
             await Coupon_Model.findOneAndDelete({ couponCode: coupon });
             console.log("The coupon in expired......");
+            res.json({expired:true})
           } else {
             req.session.roomCalc.RoomPrice =
               parseInt(req.session.roomCalc.RoomPrice) -

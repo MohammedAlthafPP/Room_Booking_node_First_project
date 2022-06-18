@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(fileUpload())
 app.use(session({
   secret:process.env.SESSION_SECRET_KEY,
-  cookie:{maxAge:60000000},
+  cookie:{maxAge:900000},
   saveUninitialized:true,
   resave: true,
 }))
