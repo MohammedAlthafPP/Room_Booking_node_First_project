@@ -1,7 +1,11 @@
 .gradient-custom {
     /* fallback for old browsers */
     background: #6a11cb;
+    background: url(/images/User-profile/loginbg-img.jpg) center no-repeat !important;
+    background-size: cover;
     height:100%;
+   
+
     
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
