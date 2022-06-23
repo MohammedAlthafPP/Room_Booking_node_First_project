@@ -7,7 +7,7 @@
         background-repeat: no-repeat;
         background-position: center center;
     }
-    a, button { transition: all 0.3s ease; }
+    a,   { transition: all 0.3s ease; }
     a:hover,
     a:focus {
         text-decoration: none;
@@ -776,7 +776,7 @@ p:last-child { margin-bottom: 0; }
 .tm-banner-subtitle {
     font-size: 1.5rem;
     margin-top: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 1px; 
 }
 
 .tm-banner-header { color: white; }
@@ -1330,3 +1330,29 @@ footer p { color: white; }
 }
 
 
+
+
+
+.test {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    background: url(/images/User-profile/loginbg-img.jpg) center no-repeat !important;
+    background-size: cover;
+    height:100%;
+   
+
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+
+
+.signupbtn:hover{
+    background-color:white !important  ;
+    /* border: 1px solid #4ebcf1 ; */
+    color: #4ebcf1 !important; 
+    cursor: pointer;
+}

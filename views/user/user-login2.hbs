@@ -14,22 +14,29 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+        <style>
+            input::placeholder {
+    font: 15px/3 sans-serif;
+}
+        </style>
+
 </head>
 
 <body>
 
     <section>
-        <section class="vh-100% gradient-custom">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center" style="height:100%;">
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div class="card  text-dark" style="border-radius: 1rem; height: max-content; background-color: rgba(255, 255, 255, 0.705);box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius: 15px;" >
+        <section class="vh-100% gradient-custom ">
+            <div class="container py-5 h-100 " style="border-radius: 50px;">
+                <div class="row d-flex justify-content-center align-items-center " style="height:100%;">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5 ">
+                        <div class="card  text-white border border-3"
+                            style="height: max-content; background-color: transparent;border-radius: 15px;">
                             <div class="card-body p-5 text-center">
-                                <form action="/user-login" method="post">
-                                    <div class="mb-md-5 mt-md-4 pb-5">
+                                <form action="/user-login" method="post" class="bg-dange">
+                                    <div class="mb-md-0 mt-md-4 pb-5">
 
                                         <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                        <p class="text-dark-50 mb-5">Please enter your login and password!</p>
+                                        <p class="text-white-70 mb-5">Please enter your login and password!</p>
                                         {{#if blockErr}}
                                         <p style="color: red;">{{blockErr}}</p>
                                         {{/if}}
@@ -38,29 +45,32 @@
                                         {{/if}}
 
                                         <div class="form-outline form-white mb-4">
-                                            <input type="email" id="typeEmailX" class="form-control form-control-lg"
-                                                name="username" />
+                                            <input type="email" id="typeEmailX" class="form-control form-control-lg rounded-pill"
+                                                name="username" placeholder="Enter your Email"/>
                                             <label class="form-label" for="typeEmailX">Email</label>
                                         </div>
 
                                         <div class="form-outline form-dark mb-4">
                                             <input type="password" id="typePasswordX"
-                                                class="form-control form-control-lg" name="password" />
+                                                class="form-control form-control-lg rounded-pill" name="password" placeholder="Enter Your Password" />
                                             <label class="form-label" for="typePasswordX">Password</label>
                                         </div>
 
-                                        <p class="small mb-5 pb-lg-2"><a class="text-dark-5 forgot  " href="/forgot-password">Forgot
+
+
+                                        <button class="btn loginbtn  btn-lg px-5 mt-3" type="submit">Login</button>
+                                        
+                                        <p class="small  pb-lg-2 mt-5"><a class="text-white forgot  "
+                                                href="/forgot-password">Forgot
                                                 password?</a></p>
-
-                                        <button class="btn btn-outline-primary  btn-lg px-5" type="submit">Login</button>
-
 
                                     </div>
                                 </form>
 
-                                <div>
-                                    <p class="mb-0">Don't have an account? <a href="/user-signup"
-                                            class="text-dark-50 fw-bold">Sign Up</a>
+                                <div class="bg-primar">
+
+                                    <p class="mt-0">Don't have an account? <a href="/user-signup"
+                                            class="text-white-50 fw-bold">Sign Up</a>
                                     </p>
                                 </div>
 
