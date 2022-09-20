@@ -1,6 +1,6 @@
 # Bluepearl
 
-A hotel booking application using Node.js, Express.js, MongoDB
+A Room booking application using Node.js, Express.js, MongoDB
 
 
 
