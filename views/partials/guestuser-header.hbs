@@ -20,7 +20,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top " id="usernavbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top p-0 m-0" id="usernavbar">
   <div class="container bg-transparent">
     <a class="navbar-brand" href="/users/homepage"> <img src="/images/bluepearl.logo.png" alt="" style="width:90px; height:74px;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -31,7 +31,7 @@
 
 
 
-    <div class="collapse navbar-collapse  ps-lg-5 " id="navbarSupportedContent">
+    <div class="collapse navbar-collapse  ps-lg-0 " id="navbarSupportedContent">
       {{#if date}}
       <form action="/users/datesubmit" method="post">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly ms-lg-5 mt-3">
@@ -268,7 +268,7 @@
       </form> --}}
 
       <form class="d-flex ">
-        <a href="/user-login" class="btn fw-bold fs-5 me-5 text-black">Login</a>
+        <a href="/user-login" class="btn fw-bold fs-5 me-0 text-black">Login</a>
 
 
         {{#if user}}

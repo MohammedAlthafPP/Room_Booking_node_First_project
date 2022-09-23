@@ -5,14 +5,11 @@
 <div>
 
     <div class="d-flex justify-content-center align-items-center container">
-
         <div class="card py-5 px-3 " style="height:max-content;">
             <div>
                 {{#if otpResendMsg}}
                 <p class="text-center" style="color:green;"> <strong>{{otpResendMsg}}</strong> </p>
                 {{/if}}
-
-
             </div>
 
             <form action="/mobileotp" method="post" id="Mobile-OTP">
@@ -33,8 +30,6 @@
                 <div class="text-center mt-3"><span class="d-block mobile-text">Don't receive the code?</span><span
                         class="font-weight-bold text-danger cursor"> <a href="/resentOtp" class="btn "> Resend</a>
                     </span></div>
-
-
             </form>
         </div>
     </div>

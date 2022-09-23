@@ -13,10 +13,12 @@
 <link rel="stylesheet" href="/stylesheets/checkout-page.css">
 
 
- {{#if mgg}}
+{{#if mgg}}
 <div class="alert alert-danger d-flex align-items-center mt-5" role="alert">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <path
+      d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
   </svg>
   <div>
     {{mgg}}
@@ -219,10 +221,7 @@
                 </div>
                 <div class="ms-auto font-weight-bold" id="RoomCount"><b>{{processdata.Roomscount}}X</b></div>
               </div>
-
-
-
-              <form action="" method="post" id="check-room-add" >
+              <form action="" method="post" id="check-room-add">
                 <div class="p-2 d-flex">
                   <div class="col-8">
                     Adult<span></span>
@@ -270,19 +269,15 @@
                 </div>
               </form>
               <div class="border-top px-2 mx-2"></div>
-              <div class="p-2 d-flex">
-                <form action="" id="coupon-form" method="post" class="d-flex" >
-                  <div class="col-8 d-flex">
-
-                    <input type="text" name="couponCode" class="border-0 border-bottom-1"
-                      placeholder="Enter Coupon code" style="width: ;height: 40px; padding-left: 15px; ">
+              <div class="p-2 d-flex ">
+                <form action="" id="coupon-form" method="post" class="d-flex " style="width: 100%">
+                  <div class="col-8 d-flex  p-0">
+                    <input type="text" name="couponCode" class="border-0 border-bottom-1 "
+                      placeholder="Enter Coupon code" style="width: 100%;height: 40px;">
                   </div>
 
                   <div class=" ms-auto text-success d-flex justify-content-end">
-
                     <button class="btn btn-primary" type="submit"> Apply </button>
-
-
                   </div>
 
                 </form>
@@ -434,66 +429,66 @@
       method: 'post',
       data: $('#coupon-form').serialize(),
       success: (response) => {
-        console.log(response,"==New Response")
+        console.log(response, "==New Response")
 
         if (response) {
 
 
-          if(response.Exist){
+          if (response.Exist) {
             swal("Sorry!", "Coupon Already used");
-             let getDiscountValue = '';
-          let getDiscountAmount = '';
+            let getDiscountValue = '';
+            let getDiscountAmount = '';
 
-          getDiscountAmount = `${response.discount}`;
-          getDiscountValue = `${response.finalRent}`;
+            getDiscountAmount = `${response.discount}`;
+            getDiscountValue = `${response.finalRent}`;
 
-          console.log(getDiscountAmount, getDiscountValue)
-         
-          document.getElementById('discount').innerHTML = "";
-          document.getElementById('discountValue').innerHTML = "";
-          document.getElementById('finalfare').innerHTML = "";
-          document.getElementById('finalfareValue').innerHTML = "";
+            console.log(getDiscountAmount, getDiscountValue)
 
-
-
-          } else if(response.expired){
-             swal("Sorry!", "this Coupon Not Exist");
-             
-          let getDiscountValue = '';
-          let getDiscountAmount = '';
-
-          getDiscountAmount = `${response.discount}`;
-          getDiscountValue = `${response.finalRent}`;
-
-          console.log(getDiscountAmount, getDiscountValue)
-         
-          document.getElementById('discount').innerHTML = "";
-          document.getElementById('discountValue').innerHTML = "";
-          document.getElementById('finalfare').innerHTML = "";
-          document.getElementById('finalfareValue').innerHTML = "";
+            document.getElementById('discount').innerHTML = "";
+            document.getElementById('discountValue').innerHTML = "";
+            document.getElementById('finalfare').innerHTML = "";
+            document.getElementById('finalfareValue').innerHTML = "";
 
 
 
-          }else{
+          } else if (response.expired) {
+            swal("Sorry!", "this Coupon Not Exist");
 
-                let getDiscountValue = '';
-          let getDiscountAmount = '';
+            let getDiscountValue = '';
+            let getDiscountAmount = '';
 
-          getDiscountAmount = `${response.discount}`;
-          getDiscountValue = `${response.finalRent}`;
+            getDiscountAmount = `${response.discount}`;
+            getDiscountValue = `${response.finalRent}`;
 
-          console.log(getDiscountAmount, getDiscountValue)
-          alert("Coupon Adding")
-          document.getElementById('discount').innerHTML = "Coupon Discount";
-          document.getElementById('discountValue').innerHTML = getDiscountAmount;
-          document.getElementById('finalfare').innerHTML = "Grand total";
-          document.getElementById('finalfareValue').innerHTML = `&#8377; ` + getDiscountValue;
-              swal("Congratulation !", "Counpon Added,enjoy ", "success");
+            console.log(getDiscountAmount, getDiscountValue)
+
+            document.getElementById('discount').innerHTML = "";
+            document.getElementById('discountValue').innerHTML = "";
+            document.getElementById('finalfare').innerHTML = "";
+            document.getElementById('finalfareValue').innerHTML = "";
+
+
+
+          } else {
+
+            let getDiscountValue = '';
+            let getDiscountAmount = '';
+
+            getDiscountAmount = `${response.discount}`;
+            getDiscountValue = `${response.finalRent}`;
+
+            console.log(getDiscountAmount, getDiscountValue)
+            alert("Coupon Adding")
+            document.getElementById('discount').innerHTML = "Coupon Discount";
+            document.getElementById('discountValue').innerHTML = getDiscountAmount;
+            document.getElementById('finalfare').innerHTML = "Grand total";
+            document.getElementById('finalfareValue').innerHTML = `&#8377; ` + getDiscountValue;
+            swal("Congratulation !", "Counpon Added,enjoy ", "success");
 
 
           }
 
-        
+
 
 
         } else {
@@ -521,7 +516,7 @@
       method: 'post',
       data: $('#checkout-for').serialize(),
       success: (response) => {
-       
+
         if (response.pahSuccess) {
           location.href = '/users/order-Success'
         } else {
@@ -546,7 +541,7 @@
       "image": "https://example.com/your_logo",
       "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response) {
-      
+
 
         verifyPayment(response, order)
 
@@ -595,10 +590,10 @@
 </script>
 
 
-{{!-- 
+{{!--
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- --}}
+--}}
 
 
 {{!-- ========================================= Checkout Phone PhoneNumber Validation
@@ -681,27 +676,27 @@
       rules: {
         adult: {
           required: true,
-         
+
           maxlength: 2,
-           Adultvalidation: true
+          Adultvalidation: true
         },
         room: {
           required: true,
-         
+
           maxlength: 2,
-         dayvalidation: true
+          dayvalidation: true
         },
       },
       messages: {
 
-       adult: {
+        adult: {
           required: "Please enter Ault count",
-         
+
           maxlength: "Number should be less than or equal to 2 digit numbers"
         },
-       room: {
+        room: {
           required: "Please enter Room count",
-         
+
           maxlength: "Number should be less than or equal to 2 digit numbers"
         },
 

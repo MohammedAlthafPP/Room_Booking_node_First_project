@@ -20,7 +20,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top " id="usernavbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top m-0 p-0" id="usernavbar">
   <div class="container bg-transparent">
     <a class="navbar-brand" href="/users/homepage"> <img src="/images/bluepearl.logo.png" alt="" style="width:90px; height:74px;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -28,10 +28,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
-
-
-    <div class="collapse navbar-collapse  ps-lg-5 " id="navbarSupportedContent">
+    <div class="collapse navbar-collapse  ps-lg-0 " id="navbarSupportedContent">
       {{#if date}}
       <form action="/users/datesubmit" method="post">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly ms-lg-5 mt-3">
@@ -44,7 +41,7 @@
             </div>
             {{else}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
+              <input class="form-control me-2 rounded-pill md-pe-0  mb-2" type="search" placeholder="Choose Destination"
                 aria-label="Search" value="{{date.destination}}" id="destination-search" name="destination">
             </div>
             {{/if}}
@@ -95,7 +92,7 @@
 
             <div class="form-group">
 
-              <select name="adult" class=" form-control me-2 rounded-pill mb-2 bg-white " id="inputAdult"
+              <select name="adult" class=" form-control me-2  rounded-pill mb-2 bg-white " id="inputAdult"
                 style="width: 50px; " required>
 
                 <option value="{{date.adult}}" selected>{{date.adult}}</option>
@@ -204,8 +201,8 @@
 
             <div class="form-group">
 
-              <select name="adult" class=" form-control me-2 rounded-pill mb-2 bg-white " id="inputAdult"
-                style="width: 45px; " data-bs-toggle="tooltip" data-bs-placement="top" title="Guests Count" required>
+              <select name="adult" class=" form-control me-2 rounded-pill  mb-2 bg-white " id="inputAdult"
+                style="width: 45px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Guests Count" required>
                 {{#if usreRequirements.adult}}
                 <option value="{{usreRequirements.adult}}" selected>{{usreRequirements.adult}}</option>
 
@@ -268,7 +265,7 @@
       </form> --}}
 
       <form class="d-flex ">
-        <a href="/users/logout" class="btn fw-bold fs-5 me-5 text-black">Logout</a>
+        <a href="/users/logout" class="btn fw-bold fs-5 me-0 text-black">Logout</a>
 
 
         {{#if user}}
