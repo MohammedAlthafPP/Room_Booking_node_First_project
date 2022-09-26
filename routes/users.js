@@ -78,7 +78,7 @@ router.get("/homepage", async function (req, res, next) {
         date,
         message: req.flash("msg"),
         daysZeroErr: req.flash("daysZeroErr"),
-        
+
       });
     } else {
       const rooms = await Room.find({}).lean();
@@ -90,7 +90,7 @@ router.get("/homepage", async function (req, res, next) {
         date,
         message: req.flash("msg"),
         daysZeroErr: req.flash("daysZeroErr"),
-        
+
       });
     }
   } else if (req.session.user) {
@@ -152,15 +152,14 @@ router.get("/filters", (req, res) => {
 });
 
 // ================== user checkout page ===========
-router.get("/checkout-page",verifyUser, async (req, res) => {
+router.get("/checkout-page", verifyUser, async (req, res) => {
   const id = req.query.id;
-  console.log(id, "============checkout-page");
   const user = req.session.user;
 
   try {
     if (req.session.searchDetails) {
       if (req.session.searchDetails.days <= 0) {
-        req.flash('daysZeroErr',"You Selected Same date ,Please Choose valid one")
+        req.flash('daysZeroErr', "You Selected Same date ,Please Choose valid one")
         res.redirect("/users/homepage");
       } else {
         const searchDetails = req.session.searchDetails;
@@ -180,10 +179,7 @@ router.get("/checkout-page",verifyUser, async (req, res) => {
             Roomscount: Roomscount,
             RoomPrice: RoomPrice,
           };
-          console.log(
-            req.session.roomCalc,
-            "<<<<<<<<<<<<<<<<<< Roomcalc >>>>>>>>>>>>>>>>>>>>>>>>>>>"
-          );
+
         } else {
           let Roomscount = parseInt(searchDetails.room);
           let RoomPrice = parseInt(searchDetails.days) * parseInt(rooms.total);
@@ -202,7 +198,7 @@ router.get("/checkout-page",verifyUser, async (req, res) => {
           MobileOTPErr: req.session.MobileOTPErr,
           usreRequirements,
           isReadOnly: true,
-         
+
         });
         req.session.MobileOTPErr = false;
       }
@@ -220,21 +216,13 @@ router.get("/checkout-page",verifyUser, async (req, res) => {
           parseInt(Roomscount);
         let RoomPrice =
           parseInt(RoomPricewithout) + parseInt(rooms.security_deposit);
-        console.log(
-          Roomscount,
-          RoomPrice,
-          rooms,
-          "==Roomscount, RoomPrice, rooms"
-        );
+
 
         req.session.roomCalc = {
           Roomscount: Roomscount,
           RoomPrice: RoomPrice,
         };
-        console.log(
-          req.session.roomCalc,
-          "<<<<<<<<<<<<<<<<<< Roomcalc >>>>>>>>>>>>>>>>>>>>>>>>>>>"
-        );
+
       } else if (parseInt(searchDetails.adult) == 1) {
         let Roomscount = parseInt(searchDetails.room);
         let RoomPrice = parseInt(searchDetails.days) * parseInt(rooms.total);
@@ -252,17 +240,16 @@ router.get("/checkout-page",verifyUser, async (req, res) => {
         MobileOTPErr: req.session.MobileOTPErr,
         date,
         isReadOnly: true,
-       
+
       });
       req.session.MobileOTPErr = false;
     } else {
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAA");
+
       req.flash("msg", "Choose Destination and Date");
       res.redirect("/users/homepage");
     }
   } catch (err) {
     console.log(err);
-    console.log("BBBBBBBBBBBBBBBBBBBBB");
     res.redirect("/users/homepage");
   }
 });
@@ -275,7 +262,6 @@ router.get("/payment-page", (req, res) => {
 // =========================== LANDING PAGE SEARCH FORM ===========================
 
 router.post("/landingSearch", async (req, res) => {
-  console.log(req.body, "+++++++++++++++++++ req.body");
   req.session.searchDetails = {
     destination: req.body.destination,
     room: req.body.room,
@@ -294,13 +280,7 @@ router.post("/landingSearch", async (req, res) => {
 router.post("/billing", verifyUser, (req, res) => {
   const Room_id = req.query.room_id;
   const User_id = req.query.user_id;
-  console.log(Room_id, "Aa");
-  console.log(User_id, "kkkk");
 
-  console.log(
-    req.body,
-    "Billing000000000000000000000000000000000000000000000000000000"
-  );
 });
 
 //  ==========================================
@@ -311,9 +291,7 @@ router.get("/autocomplete", (req, res) => {
     .sort({ updated_at: -1 })
     .sort({ created_at: -1 })
     .limit(3);
-  console.log(rooms, "=============");
   rooms.exec(function (err, data) {
-    console.log(data, "????????????????????????????????????????");
     var result = [];
     if (!err) {
       if (data && data.length && data.length > 0) {
@@ -322,7 +300,6 @@ router.get("/autocomplete", (req, res) => {
             id: element._id,
             label: element.place,
           };
-          console.log(obj, "OOOOOOOOOOOOOBBBBBBBBBBBJJJJJJJJJJJ");
           result.push(obj);
         });
       }
@@ -351,7 +328,7 @@ router.get("/view-booking", async (req, res) => {
     .sort({ timeAndDate: "desc" })
     .lean()
     .exec();
-  
+
   if (req.session.searchDetails) {
     usreRequirements = req.session.searchDetails;
     res.render("user/view-booking", {
@@ -386,12 +363,6 @@ router.get("/cancle-booking", async (req, res) => {
   let RoomCount = req.query.rc;
   let user_id = user._id;
 
-  console.log(room_id, "ROOM");
-  console.log(user_id, "USER");
-  console.log(R_id, "R_id");
-  console.log(RoomCount, "RoomCount");
-  console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-
   await Booking.findOneAndUpdate(
     { _id: room_id },
     { $set: { Status: "Cancelled", isStatus: false } }
@@ -417,7 +388,6 @@ router.get("/cancle-booking", async (req, res) => {
 
 router.post("/destination", async (req, res) => {
   const Place = req.body.place;
-  console.log(Place, "===Place");
   const rooms = await Room.find({ place: Place });
 
   res.json({ rooms });
@@ -635,13 +605,13 @@ router.post("/datesubmit", async (req, res) => {
     const Place = req.session.searchDetails.destination;
     // const Place=req.session.searchResult.place
     const rooms = await Room.find({ place: Place }).lean();
-    
+
 
     res.render("user/homepage", { rooms, user, date });
 
 
-    
-  } else  {
+
+  } else {
     const rooms = await Room.find({}).lean();
 
     res.render("user/homepage", { rooms, user, date });
@@ -650,9 +620,6 @@ router.post("/datesubmit", async (req, res) => {
 
 //===================== Apply code ==================
 router.post("/applyCoupon", async (req, res) => {
-  console.log(req.body, "-----coupon.body");
-  console.log(req.session.roomCalc, "111111111112222222223333333333333");
-
   //verify coupon code
 
   try {
@@ -675,7 +642,7 @@ router.post("/applyCoupon", async (req, res) => {
         if (isCouponUsed) {
           console.log("you are already used the coupon...");
           req.flash("msgg", "you are already used the coupon...");
-          res.json({Exist:true})
+          res.json({ Exist: true })
         } else {
           if (
             new Date().getTime() >=
@@ -683,15 +650,11 @@ router.post("/applyCoupon", async (req, res) => {
           ) {
             await Coupon_Model.findOneAndDelete({ couponCode: coupon });
             console.log("The coupon in expired......");
-            res.json({expired:true})
+            res.json({ expired: true })
           } else {
             req.session.roomCalc.RoomPrice =
               parseInt(req.session.roomCalc.RoomPrice) -
               parseInt(isCouponActive.discount);
-            console.log(
-              req.session.roomCalc.RoomPrice,
-              "========final req.session.roomCalc.RoomPrice"
-            );
 
             await Coupon_Model.updateOne(
               { couponCode: coupon },
@@ -731,7 +694,6 @@ router.post("/applyCoupon", async (req, res) => {
 
 router.post("/checkoutDatesubmition", async (req, res) => {
   const id = req.body.Room_id;
-  console.log(req.body,"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   req.session.searchDetails = req.body;
 
   console.log(
@@ -742,14 +704,13 @@ router.post("/checkoutDatesubmition", async (req, res) => {
   );
 
   try {
-    console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+
     if (req.session.searchDetails) {
       const searchDetails = req.session.searchDetails;
       const usreRequirements = req.session.searchDetails;
       const rooms = await Room.findById({ _id: id }).lean();
 
       if (searchDetails.room && searchDetails.adult && searchDetails.days) {
-        console.log(searchDetails.room , searchDetails.adult ,searchDetails.days ,"searchDetails.room , searchDetails.adult ,searchDetails.daysb ============================================================================");
         let room = parseFloat(searchDetails.adult) / 2;
         let TotalRooms = Math.round(parseFloat(room));
         let UserRoomCount = parseInt(searchDetails.room);
@@ -773,12 +734,7 @@ router.post("/checkoutDatesubmition", async (req, res) => {
             Roomscount: Roomscount,
             RoomPrice: RoomPrice,
           };
-          console.log(
-            req.session.roomCalc,
-            "<<<<<<<<<<<<<<<<<< Roomcalc >>>>>>>>>>>>>>>>>>>>>>>>>>>",
-            RoomPricewithout,
-            "===RoomPricewithout"
-          );
+
           const processdata = req.session.roomCalc;
           res.json(processdata);
         } else {
@@ -790,7 +746,6 @@ router.post("/checkoutDatesubmition", async (req, res) => {
             if (searchDetails.adult >= 2) {
               let room = parseFloat(searchDetails.adult) / 2;
               let Roomscount = Math.round(parseFloat(room));
-              console.log(Roomscount,"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
               let RoomPricewithout =
                 parseInt(searchDetails.days) *
                 parseInt(rooms.price_withOut_security_deposit) *
@@ -802,10 +757,7 @@ router.post("/checkoutDatesubmition", async (req, res) => {
                 Roomscount: Roomscount,
                 RoomPrice: RoomPrice,
               };
-              console.log(
-                req.session.roomCalc,
-                "<<<<<<<<<<<<<<<<<< Roomcalc >>>>>>>>>>>>>>>>>>>>>>>>>>>"
-              );
+
               const processdata = req.session.roomCalc;
 
               res.json({ processdata, isRoomCount: true });
@@ -820,7 +772,7 @@ router.post("/checkoutDatesubmition", async (req, res) => {
             }
 
             res.render("user/checkout-page", {
-            
+
               rooms,
               processdata: req.session.roomCalc,
               searchDetails: req.session.searchDetails,
@@ -834,7 +786,7 @@ router.post("/checkoutDatesubmition", async (req, res) => {
       } else {
         console.log("/checkoutDatesubmition Error ======");
         res.render("user/checkout-page", {
-         
+
           rooms,
           processdata: req.session.roomCalc,
           searchDetails: req.session.searchDetails,
@@ -845,7 +797,7 @@ router.post("/checkoutDatesubmition", async (req, res) => {
       }
     }
   } catch (error) {
-    console.log("/checkoutDatesubmition Error ======catch",error);
+    console.log("/checkoutDatesubmition Error ======catch", error);
     res.redirect("/users/homepage");
   }
 });

@@ -1,20 +1,7 @@
 
 
 
-<style>
-  .ui-menu {
-    top: 60px !important;
-    z-index: 99 !important;
-    position: fixed !important;
 
-
-
-  }
-
-  .ui-helper-hidden-accessible {
-    margin-top: 20px;
-  }
-</style>
 
 
 
@@ -166,13 +153,13 @@
           <li class="nav-item">
             {{#if isReadOnly}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{usreRequirements.checkin}}" name="checkin" id="CheckIn12"
                 onchange="calculateHourss()" required readonly style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{usreRequirements.checkin}}" name="checkin" id="CheckIn12"
                 onchange="calculateHourss()" required>
             </div>
@@ -181,13 +168,13 @@
           <li class="nav-item">
             {{#if isReadOnly}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{usreRequirements.checkout}}" name="checkout" id="CheckOut12"
                 onchange="calculateHourss()" required readonly style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{usreRequirements.checkout}}" name="checkout" id="CheckOut12"
                 onchange="calculateHourss()" required>
             </div>

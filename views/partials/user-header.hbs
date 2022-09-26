@@ -15,12 +15,13 @@
     margin-top: 20px;
   }
 </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top m-0 p-0" id="usernavbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top m-0 p-0 " id="usernavbar">
   <div class="container bg-transparent">
     <a class="navbar-brand" href="/users/homepage"> <img src="/images/bluepearl.logo.png" alt="" style="width:90px; height:74px;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -42,37 +43,37 @@
             {{else}}
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill md-pe-0  mb-2" type="search" placeholder="Choose Destination"
-                aria-label="Search" value="{{date.destination}}" id="destination-search" name="destination">
+                aria-label="Search" value="{{date.destination}}" id="destination-search" name="destination" style="background-color:white;">
             </div>
             {{/if}}
           </li>
           <li class="nav-item">
             {{#if isReadOnly}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onsubmit="calculateHourss()"
-                required readonly style="background-color:white;">
+                required readonly="true" style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{date.checkin}}" name="checkin" id="CheckIn12" onsubmit="calculateHourss()"
-                required>
+                required style="background-color:white;">
             </div>
             {{/if}}
           </li>
           <li class="nav-item">
             {{#if isReadOnly}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{date.checkout}}" name="checkout" id="CheckOut12"
-                onsubmit="calculateHourss()" required readonly style="background-color:white;">
+                onsubmit="calculateHourss()" required readonly style="background-color:white;" style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class=" baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{date.checkout}}" name="checkout" id="CheckOut12"
-                onsubmit="calculateHourss()" required>
+                onsubmit="calculateHourss()" required style="background-color:white;">
             </div>
             {{/if}}
           </li>
@@ -157,36 +158,36 @@
             <div class="d-flex">
               <input class="form-control me-2 rounded-pill pe-5 mb-2" type="search" placeholder="Choose Destination"
                 aria-label="Search" value="{{usreRequirements.destination}}" id="destination-search" name="destination"
-                >
+               style="background-color:white;" >
               {{/if}}
           </li>
           <li class="nav-item">
             {{#if isReadOnly}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{usreRequirements.checkin}}" name="checkin" id="CheckIn12"
                 onchange="calculateHourss()" required readonly style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{usreRequirements.checkin}}" name="checkin" id="CheckIn12"
-                onchange="calculateHourss()" required>
+                onchange="calculateHourss()" required style="background-color:white;">
             </div>
             {{/if}}
           </li>
           <li class="nav-item">
             {{#if isReadOnly}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date"
                 aria-label="Search" value="{{usreRequirements.checkout}}" name="checkout" id="CheckOut12"
                 onchange="calculateHourss()" required readonly style="background-color:white;">
             </div>
             {{else}}
             <div class="d-flex">
-              <input class="form-control me-2 rounded-pill mb-2" type="datetime-local" placeholder="Choose Date "
+              <input class="baseDate form-control me-2 rounded-pill mb-2" type="text" placeholder="Choose Date "
                 aria-label="Search" value="{{usreRequirements.checkout}}" name="checkout" id="CheckOut12"
-                onchange="calculateHourss()" required>
+                onchange="calculateHourss()" required style="background-color:white;">
             </div>
             {{/if}}
 
@@ -275,7 +276,7 @@
           <button
             class="dropdown-toggl btn btn-outline-dark rounded-pill fw-bold text-black btn bg-transparent border-3 border-black  "
             type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-         <span class="text-truncate"> {{user.name}}</span> 
+         <span class="text-truncate text-dark">{{user.name}}</span> 
 
           </button>
 
@@ -299,6 +300,20 @@
 </header>
 
 
+ <!--  Flatpickr  -->
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script>
+    $(".baseDate").flatpickr({
+      enableTime: true,
+      dateFormat: "F, d Y H:i",
+      minDate: "today",
+      maxDate: new Date().fp_incr(30),
+      
+      
+    });
+  </script>
 
 
 <script>

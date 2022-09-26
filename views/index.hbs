@@ -7,6 +7,8 @@
   <meta name="theme-color" content="#0034a1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -22,7 +24,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
   <link rel="icon" type="image/x-icon" href="/images/bluepearl-favicon.png" style="width: 42px; height: 42px;;">
-    <title>Bluepearl</title>
+  <title>Bluepearl</title>
 
 </head>
 
@@ -33,7 +35,8 @@
     <header class="pt-3 sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="container">
-          <a class="navbar-brand text-white fw-bold" href="#"><img src="/images/blue-pearl new -inedex-logo.png" alt="" style="width:169px; height:46px; " ></a>
+          <a class="navbar-brand text-white fw-bold" href="#"><img src="/images/blue-pearl new -inedex-logo.png" alt=""
+              style="width:169px; height:46px; "></a>
           <button class="navbar-toggler bg-white " type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -115,7 +118,7 @@
                 <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                   <label for="inputCity">Choose Your Destination</label>
                   <input name="destination" type="text" class="form-control" id="inputCity"
-                    placeholder="Type your destination..." >
+                    placeholder="Type your destination...">
                 </div>
                 <div class="form-group tm-form-group tm-form-group-1">
                   <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
@@ -151,7 +154,7 @@
                   <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
 
                     <label for="inputChildren">Children</label>
-                    <select name="children" class="form-control tm-select" id="inputChildren" >
+                    <select name="children" class="form-control tm-select" id="inputChildren">
                       <option value="0" selected>0</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -171,12 +174,12 @@
 
                 <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                   <label for="inputCheckIn">Check In Date</label>
-                  <input name="checkin" type="datetime-local" class="form-control" id="inputCheckIn"
-                    placeholder="Check In" onchange="calculateHours()" required>
+                  <input name="checkin" type="text" class="baseDate form-control" id="inputCheckIn" placeholder="Check In"
+                    onchange="calculateHour()" required>
                 </div>
                 <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                   <label for="inputCheckOut">Check Out Date</label>
-                  <input name="checkout" type="datetime-local" class="form-control" id="inputCheckOut"
+                  <input name="checkout" type="text" class="baseDate form-control" id="inputCheckOut"
                     placeholder="Check Out" onchange="calculateHour()" required>
                   {{!-- <p id="hours"></p> --}}
                   <input type="text" id="hours" name="total_hours" value="" hidden>
@@ -199,7 +202,20 @@
 
   </section>
 
+  <!--  Flatpickr  -->
 
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script>
+    $(".baseDate").flatpickr({
+      enableTime: true,
+      dateFormat: "F, d Y H:i",
+      minDate: "today",
+      maxDate: new Date().fp_incr(30),
+      disableMobile: "true",
+      position: "above"
+    });
+  </script>
 
 
   <script>
@@ -213,7 +229,7 @@
             type: "GET",
             data: req,
             success: function (data) {
-             // console.log(data)
+              // console.log(data)
               res(data)
             },
             error: function (err) {
@@ -245,21 +261,21 @@
 
 
 
-<script>
-  function calculateHour() {
-    var checkin = document.getElementById('inputCheckIn').value;
-    var checkout = document.getElementById('inputCheckOut').value;
-    const dateIn = new Date(checkin);
-    const dateout = new Date(checkout);
-    const time = Math.abs(dateout - dateIn);
-    const totalhours = Math.ceil(time / (1000 * 60 * 60));
-    const days = Math.ceil(totalhours / 24)
-    document.getElementById('hours').value = totalhours;
-    document.getElementById('days').value = days;
-    console.log(totalhours)
-  }
+  <script>
+    function calculateHour() {
+      var checkin = document.getElementById('inputCheckIn').value;
+      var checkout = document.getElementById('inputCheckOut').value;
+      const dateIn = new Date(checkin);
+      const dateout = new Date(checkout);
+      const time = Math.abs(dateout - dateIn);
+      const totalhours = Math.ceil(time / (1000 * 60 * 60));
+      const days = Math.ceil(totalhours / 24)
+      document.getElementById('hours').value = totalhours;
+      document.getElementById('days').value = days;
+      console.log(totalhours," totalhours")
+    }
 
-</script>
+  </script>
 
 
 </body>
